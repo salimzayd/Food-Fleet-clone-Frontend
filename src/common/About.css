@@ -1,0 +1,42 @@
+.contents {
+    height: 400px;
+    width: 500px;
+    padding: 0;
+    margin: 150px;
+    margin-bottom: 30px;
+    background-color: bisque;
+    float: right;
+    
+}
+.img1{
+    background-color: aqua;
+    width: 200px;
+    height: 300px;
+    margin: 120px;
+    position: absolute;
+    margin-top: 180px;
+    
+}
+.img2{
+    background-color: aquamarine;
+    width: 200px;
+    height: 145px;
+    margin: 335px;
+    position: absolute;
+    margin-top: 180px;
+}
+.img3{
+    background-color: black;
+    width: 200px;
+    height: 145px;
+    margin: 335px;
+    position: absolute;
+    color: wheat;
+}
+.contents button{
+    color: blue;
+    border-radius: 10px;
+    margin-left: 200px;
+    margin-top: 60px;
+    background-color: black;
+}
