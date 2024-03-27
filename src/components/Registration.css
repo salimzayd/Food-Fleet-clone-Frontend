@@ -1,0 +1,11 @@
+
+    .mt-3{
+        display: flex;
+        justify-content: center;
+        color: wheat;
+    }
+    .container1{
+        background-image: url('C:\Users\hp\OneDrive\Desktop\clone project\frontend\foodfleet\src\components\Assets\pic1.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }

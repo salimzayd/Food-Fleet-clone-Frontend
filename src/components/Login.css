@@ -1,0 +1,16 @@
+.container2{
+    background-image: url('C:\Users\hp\OneDrive\Desktop\clone project\frontend\foodfleet\src\components\Assets\fresh-pasta-with-hearty-bolognese-parmesan-cheese-generated-by-ai.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.qoute{
+    color: rgb(241, 243, 242);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-right: 300px;
+}
+.one{
+    color: red;
+}
+.two{
+    color: rgb(38, 207, 38);
+}
