@@ -5,40 +5,82 @@ import axios from 'axios'
 
 const Registration = () => {
 
-    const [name,setName] = useState("");
-    const [email,setEmail] = useState("")
-    const [number,setNumber] = useState("")
-    const [password,setPassword] = useState("")
+    const [formdata,setFormdata] = useState({
+        name:'',
+        email:'',
+        phonenumber:'',
+        password:''
+    })
+    const [error,setError] = useState({})
     const navi = useNavigate();
 
 
-    async function onSubmit(e) {
+    const onChange = (e)=>{
+        setFormdata({...formdata,[e.target.id]:e.target.value});
+    };
+
+    const validateForm = () =>{
+        let error = {}
+        let isvalid = true
+
+        if(!formdata.name.trim()){
+            error.name = 'name is required';
+            isvalid=false
+        }
+        if(!formdata.email.trim()){
+            error.email = 'email is required'
+            isvalid = false
+        }else if(!/^\S+@\S+\.\S+$/.test(formdata.email)){
+            error.email = 'invalid email format';
+            isvalid = false
+        }
+
+        if(!formdata.phonenumber.trim()){
+            error.phonenumber = 'phone number is required'
+            isvalid = false
+        }else if (!/^\d{10}$/.test(formdata.phonenumber)){
+            error.phonenumber = 'invalid phone number';
+            isvalid = false
+        }
+        if(!formdata.password.trim()){
+            error.password = 'password is required';
+            isvalid = false
+        }
+       
+        
+        setError(error)
+        return isvalid
+    };
+
+    const  onSubmit = async (e) =>{
         e.preventDefault()
 
-
-        try{
-            await axios.post("http://localhost:5000/",{
-                name,email,number,password
-            })
-           }catch(e){
-            console.log(e);
+        if(validateForm()){
+            try{
+                const response =  await axios.post("http://localhost:5000/api/register",formdata);
+                    console.log(response,"rstdf");
+                    navi('/login')
+            }catch (errors){
+                console.error('registeration error',errors);
+            }
         }
-        navi("/login");
     }
-  return (
+
+
+        return (
     <> 
     <div className='container1 d-flex justify-content-center align-items-center' style={{minHeight:"100vh", maxWidth:"300vh"}}>
         <div className='rounded shadow p-3 mb-5 ' style={{width:"25rem"}}>
-            <form>
+            <form onSubmit={onSubmit}>
                 <h1 className='mt-3' style={{fontFamily:"inherit"}}>SIGN UP </h1>
 
-                <input className='form-control mt-3 ' type='text' placeholder='USERNAME' required onChange={(e) => {setName(e.target.value)}} />
+                <input className='form-control mt-3 ' type='text' id='name' placeholder='USERNAME' value={formdata.name} onChange={onChange} />{error.name && <div className='error'>{error.name}</div>}
                 <br />
-                <input className='form-control mt-4' type='Email' placeholder='EMAIL' required  onChange={(e) => {setEmail(e.target.value)}}/>
+                <input className='form-control mt-4' type='Email' id='email' placeholder='EMAIL' value={formdata.email} onChange={onChange}/> {error.email && <div className='error'>{error.email}</div>}
                 <br />
-                <input className='form-control mt-4' type='number' placeholder='PHONE NUMBER' required onChange={(e) => {setNumber(e.target.value)}}/>
+                <input className='form-control mt-4' type='number' id='phonenumber' placeholder='PHONE NUMBER' value={formdata.phonenumber} onChange={onChange}/> {error.phonenumber && <div className='error'>{error.phonenumber}</div>}
                 <br />
-                <input  className='form-control mt-4' type='Password' placeholder='PASSWORD' required  onChange={(e) => {setPassword(e.target.value)}}/>
+                <input  className='form-control mt-4' type='Password' id='password' placeholder='PASSWORD' value={formdata.password}  onChange={onChange}/> {error.password && <div className='error'>{error.password}</div>}
 
                 <button className='btn btn-success rounded mt-4 w-100' onClick={onSubmit}>SIGN UP</button>
 
@@ -51,7 +93,8 @@ const Registration = () => {
     
     
     </>
-  )
+        )
+  
 }
 
 export default Registration

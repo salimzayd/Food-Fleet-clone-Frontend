@@ -2,7 +2,7 @@ import React from 'react';
 import {Navbar,Nav,Container} from 'react-bootstrap'
 import {LinkContainer} from 'react-router-bootstrap'
 import { Link } from 'react-router-dom';
-import { BiSolidOffer } from "react-icons/bi";
+
 
 
 const NAVbar = () => {
@@ -10,8 +10,7 @@ const NAVbar = () => {
     <>
     <Navbar bg="dark" variant="dark" expand="lg">
         <Container fluid>
-            <h6 className='text-light'> 
-            <BiSolidOffer  className='text-warning'/> &nbsp;&nbsp; Free Home Delivery on order above 1000/- rupees</h6>
+            <h3 style={{color:"white"}}>FOOD FLEET</h3>
             <Nav className='ms-auto'>
                 <LinkContainer to="/" activeClassName>
                     <Nav.Link>HOME |</Nav.Link>

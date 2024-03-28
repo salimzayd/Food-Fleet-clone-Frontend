@@ -5,6 +5,7 @@ import Reviews from "./common/Reviews";
 import NAVbar from "./common/navbar";
 import Login from "./components/Login";
 import Registration from "./components/Registration";
+import Home from "./common/Home";
 
 
 function App() {
@@ -19,10 +20,12 @@ function App() {
       {/* <Reviews /> */}
 
 
-      <Routes>
+      {/* <Routes>
         <Route path="/register" element={<Registration /> } />
         <Route path="/login" element={<Login /> } />
-      </Routes>
+      </Routes> */}
+
+      <Home />
     </div>
   );
 }
