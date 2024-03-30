@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import "./Registration.css"
 import { Link,useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 const Registration = () => {
 
@@ -52,17 +53,22 @@ const Registration = () => {
         return isvalid
     };
 
-    const  onSubmit = async (e) =>{
+    const  onSubmition = async(e) =>{
         e.preventDefault()
 
         if(validateForm()){
-            try{
-                const response =  await axios.post("http://localhost:5000/api/register",formdata);
-                    console.log(response,"rstdf");
+                await axios.post("http://localhost:5000/api/users/register",formdata)
+                .then(result => {
+                    console.log(result);
+                    toast.success("registration success")
                     navi('/login')
-            }catch (errors){
-                console.error('registeration error',errors);
-            }
+                })
+                .catch(error => {
+                    console.log(error.response.data);
+                    toast.error(error.response.data.message)
+                })
+                    
+            
         }
     }
 
@@ -71,7 +77,7 @@ const Registration = () => {
     <> 
     <div className='container1 d-flex justify-content-center align-items-center' style={{minHeight:"100vh", maxWidth:"300vh"}}>
         <div className='rounded shadow p-3 mb-5 ' style={{width:"25rem"}}>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={onSubmition}>
                 <h1 className='mt-3' style={{fontFamily:"inherit"}}>SIGN UP </h1>
 
                 <input className='form-control mt-3 ' type='text' id='name' placeholder='USERNAME' value={formdata.name} onChange={onChange} />{error.name && <div className='error'>{error.name}</div>}
@@ -82,7 +88,7 @@ const Registration = () => {
                 <br />
                 <input  className='form-control mt-4' type='Password' id='password' placeholder='PASSWORD' value={formdata.password}  onChange={onChange}/> {error.password && <div className='error'>{error.password}</div>}
 
-                <button className='btn btn-success rounded mt-4 w-100' onClick={onSubmit}>SIGN UP</button>
+                <button className='btn btn-success rounded mt-4 w-100'>SIGN UP</button>
 
                 <p className='mt-4 d-flex justify-content-center' style={{color:"whitesmoke"}}>
                     Already have an account ? <Link to='/login' style={{textDecoration:"none"}}>LOGIN</Link>

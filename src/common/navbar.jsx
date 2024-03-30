@@ -1,29 +1,39 @@
 import React from 'react';
-import {Navbar,Nav,Container} from 'react-bootstrap'
+import {Navbar,Nav,Container, Button} from 'react-bootstrap'
 import {LinkContainer} from 'react-router-bootstrap'
 import { Link } from 'react-router-dom';
+import { MdAdminPanelSettings } from "react-icons/md";
 
 
 
 const NAVbar = () => {
   return (
     <>
-    <Navbar bg="dark" variant="dark" expand="lg">
+    <Navbar bg="black" variant="dark" expand="lg">
         <Container fluid>
-            <h3 style={{color:"white"}}>FOOD FLEET</h3>
+            <h3><span style={{color:"orange"}}>FOOD</span> <span style={{color:"skyblue"}}>FLEET</span></h3>
             <Nav className='ms-auto'>
-                <LinkContainer to="/" activeClassName>
-                    <Nav.Link>HOME |</Nav.Link>
+
+                <LinkContainer to='/login'>
+                <Nav.Link>
+                    <MdAdminPanelSettings  style={{width:"30px", height:"30px"}}/>
+                                </Nav.Link>
+                </LinkContainer>
+                <LinkContainer to="/" >
+                    <Nav.Link>HOME </Nav.Link>
                 </LinkContainer>
 
-                <LinkContainer to="/about" activeClassName>
-                    <Nav.Link>About Us |</Nav.Link>
+                <LinkContainer to="/about" >
+                    <Nav.Link>ABOUT US </Nav.Link>
                 </LinkContainer>
 
-                <LinkContainer to="/contact" activeClassName>
-                    <Nav.Link>Contact us |</Nav.Link>
+                <LinkContainer to="/contact" >
+                    <Nav.Link>CONTACT US </Nav.Link>
                 </LinkContainer>
-                
+
+                <LinkContainer to="/dishes" >
+                    <Nav.Link>DISHES</Nav.Link>
+                </LinkContainer>
             </Nav>
         </Container>
     </Navbar>
