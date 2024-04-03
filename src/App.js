@@ -7,6 +7,7 @@ import Registration from "./components/Registration";
 import Home1 from "./common/Home1";
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import OTP from "./components/DEMO/OTP"
 
 
 
@@ -17,17 +18,18 @@ function App() {
       
       {/* <Registration /> */}
       {/* <Login /> */}
-      <NAVbar />
-      <About />
+      {/* <NAVbar /> */}
+      {/* <About /> */}
       {/* <Reviews /> */}
 
     {/* <Home1 /> */}
 
-       {/* <Routes>
+       <Routes>
          <Route path="/" element={<Home1 /> } />
         <Route path="/register" element={<Registration /> } />
+        <Route path="/verifyotp" element={<OTP /> } />
         <Route path="/login" element={<Login /> } />
-      </Routes>  */}
+      </Routes> 
 
     </div>
   );

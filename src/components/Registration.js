@@ -53,15 +53,15 @@ const Registration = () => {
         return isvalid
     };
 
-    const  onSubmition = async(e) =>{
+    const  onSubmition = (e) =>{
         e.preventDefault()
 
         if(validateForm()){
-                await axios.post("http://localhost:5000/api/users/register",formdata)
+                axios.post("http://localhost:5000/api/users/verifyotp",{phonenumber:formdata.phonenumber})
                 .then(result => {
                     console.log(result);
-                    toast.success("registration success")
-                    navi('/login')
+                    toast.success("registration success. redirecting to OTP verification")
+                    navi('/verifyotp',{state:{formdata}})
                 })
                 .catch(error => {
                     console.log(error.response.data);

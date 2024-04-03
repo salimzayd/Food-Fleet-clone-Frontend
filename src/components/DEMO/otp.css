@@ -1,0 +1,21 @@
+.wrapper{
+    height: 250px;
+    width: 400px;
+    background-color: antiquewhite;
+    margin-left: 550px;
+    margin-top: 200px;
+    border: 3px solid black;
+    border-radius: 15px;
+}
+.wrapper h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    padding-top: 20px;
+}
