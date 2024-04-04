@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link,useLocation,useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { toast } from "react-toastify";
 import "./otp.css"
 
 const OtpVerification = () =>{
@@ -21,11 +22,12 @@ const OtpVerification = () =>{
             {phonenumber : formdata.phonenumber,otp:otp});
 
             if(otpVerificationResponse.data.success){
+                setError(null)
                 const response = await axios.post("http://localhost:5000/api/users/register",formdata,
                 {headers:{"Content-Type":"application/json"}});
 
                 if(response.data.success){
-                    setError(null);
+                    toast.success('OTP Verified Successfully')
                     navigate("/login");
                 }else{
                     setError(response.data.message);
@@ -53,6 +55,7 @@ const OtpVerification = () =>{
 
             <button type="submit">Verify</button>
             </form>
+            {error && <div className="form">{error}</div>}
 
             <div className="form">
                 Not getting OTP ? <Link to='/ report-issue'>Report issue</Link></div>  

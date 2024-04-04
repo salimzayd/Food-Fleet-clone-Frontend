@@ -16,8 +16,7 @@ function App() {
     <div className="App">
       <ToastContainer />
       
-      {/* <Registration /> */}
-      {/* <Login /> */}
+      
       {/* <NAVbar /> */}
       {/* <About /> */}
       {/* <Reviews /> */}
