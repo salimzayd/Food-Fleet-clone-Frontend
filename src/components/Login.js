@@ -19,15 +19,23 @@ const Login = () => {
 
     }
 
+    const handleLogin = (token) =>{
+        localStorage.setItem("token",token)
+        navigate('/')
+        toast.success("login successfull")
+    }
     const onSubmit = async  (e) =>{
 
         e.preventDefault()
 
-        await axios.post("http://localhost:5000/api/users/login",formdata)
+       const response =  await axios.post("http://localhost:5000/api/users/login",formdata)
         .then(result =>{
             console.log(result);
             toast.success("Login successfull")
             navigate('/')
+
+            const {token} = response.data
+            handleLogin(token)
         })
         .catch(error =>{
             console.log(error);
