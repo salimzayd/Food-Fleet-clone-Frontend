@@ -12,6 +12,8 @@ const OtpVerification = () =>{
     const [error,setError] = useState('')
 
     const formdata = location.state.formdata
+    const phonenumber = location.state.phonenumber
+    console.log(phonenumber);
 
     const handleVerify = async (e) =>{
         e.preventDefault();
@@ -19,7 +21,7 @@ const OtpVerification = () =>{
 
         try{
             const otpVerificationResponse = await axios.post("http://localhost:5000/api/users/verifyotp",
-            {phonenumber : formdata.phonenumber,otp:otp});
+            {phonenumber, otp});
 
             if(otpVerificationResponse.data.success){
                 setError(null)

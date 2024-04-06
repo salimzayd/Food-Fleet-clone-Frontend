@@ -13,6 +13,7 @@ import img12cp from "../components/Assets/product_img/img12cp.jpg"
 import img13bs from "../components/Assets/product_img/img13bs.jpg"
 import img14sm from "../components/Assets/product_img/img14sm.jpg"
 import img15nd from "../components/Assets/product_img/img15nd.jpg"
+import img16bc from "../components/Assets/product_img/img16bc.jpg"
 const DishPrdcts = [
     
     {
@@ -149,6 +150,14 @@ const DishPrdcts = [
         category:"Non-Veg",
         price:310,
         reviews:"★ 3.3"
+    },
+    {
+        id:16,
+        img:img16bc,
+        title:" Cheesy Chicken Burger ",
+        category:"Non-Veg ",
+        price:250,
+        reviews:"★ 3.1"
     }
 
 

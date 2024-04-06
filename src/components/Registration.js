@@ -57,11 +57,11 @@ const Registration = () => {
         e.preventDefault()
 
         if(validateForm()){
-                axios.post("http://localhost:5000/api/users/verifyotp",{phonenumber:formdata.phonenumber})
+                axios.post("http://localhost:5000/api/users/sendotp",{phonenumber:formdata.phonenumber})
                 .then(result => {
                     console.log(result);
                     toast.success("registration success. redirecting to OTP verification")
-                    navi('/verifyotp',{state:{formdata}})
+                    navi('/otpverification',{state:{formdata, phonenumber:formdata.phonenumber}})
                 })
                 .catch(error => {
                     console.log(error.response.data);
