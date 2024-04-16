@@ -15,34 +15,45 @@ const OtpVerification = () =>{
     const phonenumber = location.state.phonenumber
     console.log(phonenumber);
 
-    const handleVerify = async (e) =>{
+
+    
+      const handleVerify = async (e) => {
         e.preventDefault();
-
-
-        try{
-            const otpVerificationResponse = await axios.post("http://localhost:5000/api/users/verifyotp",
-            {phonenumber, otp});
-
-            if(otpVerificationResponse.data.success){
-                setError(null)
-                const response = await axios.post("http://localhost:5000/api/users/register",formdata,
-                {headers:{"Content-Type":"application/json"}});
-
-                if(response.data.success){
-                    toast.success('OTP Verified Successfully')
-                    navigate("/login");
-                }else{
-                    setError(response.data.message);
-                }
-            }else{
-                setError("invalid OTP.please try again")
+      
+        try {
+          // Send OTP
+            
+            
+          
+    
+          const otpVerificationResponse = await axios.post("http://localhost:5000/api/users/verifyotp", { phonenumber, otp });
+      
+          if (otpVerificationResponse.data.success) {
+            setError(null);
+            // If OTP verified, proceed with registration
+            try {
+              const response = await axios.post("http://localhost:5000/api/users/register", formdata, { headers: { "Content-Type": "application/json" } });
+      
+              if (response.data.success) {
+                // If registration successful, navigate to login
+                navigate("/login");
+              } else {
+                setError(response.data.message);
+              }
+            } catch (error) {
+              console.error("Error:", error.message);
+              setError("An error occurred during registration. Please try again later.");
             }
-        }catch(error){
-            console.error("error",error.message);
-            setError("An error occurred . please try again later")
+          } else {
+            setError("Invalid OTP. Please try again.");
+          }
+       } catch (error) {
+          console.error("Error:", error.message);
+          setError("An error occurred. Please try again later.");
         }
-    };
-
+      }
+    
+    
     return(
         <div className="wrapper"><h1> Verify OTP</h1>
         <form onSubmit={handleVerify} className="form">

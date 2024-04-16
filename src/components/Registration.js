@@ -80,7 +80,15 @@ const Registration = () => {
             <form onSubmit={onSubmition}>
                 <h1 className='mt-3' style={{fontFamily:"inherit"}}>SIGN UP </h1>
 
-                <input className='form-control mt-3 ' type='text' id='name' placeholder='USERNAME' value={formdata.name} onChange={onChange} />{error.name && <div className='error'>{error.name}</div>}
+                <input className='form-control mt-3 ' 
+                type='text' 
+                id='name' 
+                placeholder='USERNAME' 
+                value={formdata.name} 
+                onChange={onChange} />
+                {error.name && <div className='error'>{error.name}</div>}
+
+                
                 <br />
                 <input className='form-control mt-4' type='Email' id='email' placeholder='EMAIL' value={formdata.email} onChange={onChange}/> {error.email && <div className='error'>{error.email}</div>}
                 <br />
