@@ -8,6 +8,8 @@ import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import OTP from "./components/DEMO/OTP"
 import Dishes from "./components/Dishes";
+import Adminhome from "./components/Adminhome";
+import Adminbar from "./components/Adminbar";
 
 
 
@@ -28,6 +30,7 @@ function App() {
         <Route path="/register" element={<Registration /> } />
         <Route path="/otpverification" element={<OTP /> } />
         <Route path="/login" element={<Login /> } />
+        {/* <Route path="/adminhome" element={<Adminhome />} /> */}
       </Routes> 
 
     </div>

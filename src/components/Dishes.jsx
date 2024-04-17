@@ -27,7 +27,7 @@ const Dishes = () =>{
                                 <h3>{item.reviews}</h3>
                             </Card.Text>
                             <Button className="bg-primary" variant="danger">
-                                Order Now
+                                View Dish
                             </Button>
                         </Card.Body>
                     </Card>
