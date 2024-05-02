@@ -74,6 +74,8 @@ const OtpVerification = () =>{
                 Not getting OTP ? <Link to='/ report-issue'>Report issue</Link></div>  
             </div>
             
+          
+            
     )
 }
 export default OtpVerification;

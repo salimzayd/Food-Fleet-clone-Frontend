@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router-dom';
 import { MdAdminPanelSettings } from "react-icons/md";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const NAVbar = () => {
+
+  useEffect(() =>{
+    AOS.init()
+  })
   return (
     <>
-      <Navbar bg="black" variant="dark" expand="lg">
+      <Navbar bg="black" variant="dark" expand="lg" data-aos = "fade-up">
         <Container fluid>
           <Navbar.Brand>
             <h3><span style={{ color: "orange" }}>FOOD</span> <span style={{ color: "skyblue" }}>FLEET</span></h3>

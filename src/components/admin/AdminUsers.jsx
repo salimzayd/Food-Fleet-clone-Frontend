@@ -22,7 +22,7 @@ const AdminUsers = () => {
                 }
                 const tokenWithBearer = `Bearer ${adminToken}`
 
-                const response = await axios.get('http://localhost:5000/api/admin/alluser',{
+                const response = await axios.get('http://localhost:5000/api/admin/users',{
                     headers:{Authorization:tokenWithBearer,
                     "Content-Type":"multipart/form-data",}
                 });
