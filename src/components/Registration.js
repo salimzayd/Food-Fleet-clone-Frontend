@@ -65,7 +65,7 @@ const Registration = () => {
                 })
                 .catch(error => {
                     console.log(error.response.data);
-                    toast.error(error.response.data.message)
+                    toast.error("an error occured while registeration")
                 })
                     
             
@@ -92,7 +92,7 @@ const Registration = () => {
                 <br />
                 <input className='form-control mt-4' type='Email' id='email' placeholder='EMAIL' value={formdata.email} onChange={onChange}/> {error.email && <div className='error'>{error.email}</div>}
                 <br />
-                <input className='form-control mt-4' type='number' id='phonenumber' placeholder='PHONE NUMBER' value={formdata.phonenumber} onChange={onChange}/> {error.phonenumber && <div className='error'>{error.phonenumber}</div>}
+                <input className='form-control mt-4' type='number' maxLength={10} id='phonenumber' placeholder='PHONE NUMBER' value={formdata.phonenumber} onChange={onChange}/> {error.phonenumber && <div className='error'>{error.phonenumber}</div>}
                 <br />
                 <input  className='form-control mt-4' type='Password' id='password' placeholder='PASSWORD' value={formdata.password}  onChange={onChange}/> {error.password && <div className='error'>{error.password}</div>}
 

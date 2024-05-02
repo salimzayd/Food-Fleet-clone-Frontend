@@ -15,7 +15,7 @@ const NAVbar = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className='ms-auto'>
-              <LinkContainer to='/login'>
+              <LinkContainer to='/adminlogin'>
                 <Nav.Link>
                   <MdAdminPanelSettings style={{ width: "30px", height: "30px" }} />
                 </Nav.Link>

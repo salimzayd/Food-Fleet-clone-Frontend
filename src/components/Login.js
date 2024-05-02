@@ -11,37 +11,39 @@ const Login = () => {
         email:'',
         password:''
     })
+    const [error,setError] = useState(null)
     const navigate = useNavigate()
 
 
-    const onChange = (e) =>{
-        setFormdata({...formdata,[e.target.id] :e.target.value })
+    const handleChange = (e) =>{
+        setFormdata({...formdata,[e.target.name] :e.target.value })
 
     }
 
     const handleLogin = (token) =>{
         localStorage.setItem("token",token)
+        console.log(token,"sdfghjk");
         navigate('/')
         toast.success("login successfull")
     }
-    const onSubmit = async  (e) =>{
+    const handleSubmit = async  (e) =>{
 
         e.preventDefault()
+        try{
+       const response =  await axios.post("http://localhost:5000/api/users/login",{
+        email:formdata.email,
+        password:formdata.password
+       },{
+        headers:{"Content-Type":"application/json",},
+       });
+       console.log(response.data);
 
-       const response =  await axios.post("http://localhost:5000/api/users/login",formdata)
-        .then(result =>{
-            console.log(result);
-            toast.success("Login successfull")
-            navigate('/')
-
-            const {token} = response.data
-            handleLogin(token)
-        })
-        .catch(error =>{
-            console.log(error);
-            toast.error("An error occured while log in")
-        })
-        
+       const {token} = response.data
+       handleLogin(token)
+    }catch(error){
+        console.log(error);
+        toast.error("an error occured while log in");
+    }   
     }
 
   return (
@@ -49,14 +51,14 @@ const Login = () => {
     <Container className='container2 d-flex justify-content-center align-items-center' style={{minHeight:"100vh", maxWidth:"300vh"}}>
         <div className='qoute'><h2 >"Food delivery apps: turning <span className='one'>cravings</span> <br />into doorstep <span className='two'>delights.</span>"</h2></div>
         <div className=' shadow p-4 mb-5  rounded m-3 ' style={{maxWidth:"500px",width:"100%"}}>
-            <Form  onSubmit={onSubmit}>
+            <Form  onSubmit={handleSubmit}>
                 <h1 style={{color:"white", display:"flex", justifyContent:"center"}}> Login </h1>
                 <FormGroup className='mb-3'>
-                    <FormControl type='text' placeholder='email address' name='email' required  onChange={onChange}/>
+                    <FormControl type='text' placeholder='email address' name='email' required  onChange={handleChange}/>
                 </FormGroup>
 
                 <FormGroup className='mb-3'>
-                    <FormControl type='password' placeholder='password' name='password' required onChange={onChange} />
+                    <FormControl type='password' placeholder='password' name='password' required onChange={handleChange} />
                 </FormGroup>
 
 

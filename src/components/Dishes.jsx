@@ -2,15 +2,18 @@ import React from "react";
 import {Button,Card,Col,Navbar,Row} from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import DishPrdcts from "../components/DishPrdcts"
+import { BsSearch } from "react-icons/bs";
+
 
 
 const Dishes = () =>{
     const navigate = useNavigate()
      return(
         <div>
-           <div className='d-flex mx-5 mt-2 ' style={{justifyContent:"flex-end"}}>    
+           <div className='d-flex mx-8 mt-3 ' style={{justifyContent:"center"}}>    
              <form class="form-inline "  >
-            <input class="form-control mr-sm-2 bg-white"    type="search" placeholder="Search" aria-label="Search"/>
+
+            <input class="form-control mr-sm-10 bg-white"  style={{width:"20rem"}}  type="search" placeholder="Search here" aria-label="Search"/>
             </form>
         </div>
 

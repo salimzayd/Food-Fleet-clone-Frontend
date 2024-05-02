@@ -6,10 +6,13 @@ import Registration from "./components/Registration";
 import Home1 from "./common/Home1";
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
-import OTP from "./components/DEMO/OTP"
+import OTP from "./components/demo/OTP"
 import Dishes from "./components/Dishes";
 import Adminhome from "./components/Adminhome";
 import Adminbar from "./components/Adminbar";
+import AdminUsers from "./components/admin/AdminUsers";
+import AdminLogin from "./components/admin/AdminLogin";
+import AdminProduct from "./components/admin/AdminProduct";
 
 
 
@@ -30,7 +33,10 @@ function App() {
         <Route path="/register" element={<Registration /> } />
         <Route path="/otpverification" element={<OTP /> } />
         <Route path="/login" element={<Login /> } />
-        {/* <Route path="/adminhome" element={<Adminhome />} /> */}
+        <Route path="/adminlogin" element={<AdminLogin />} />
+        <Route path="/adminhome" element={<Adminhome />} />
+        <Route path="/adminusers" element={<AdminUsers />} />
+        <Route path="/addproduct" element={<AdminProduct />} />
       </Routes> 
 
     </div>

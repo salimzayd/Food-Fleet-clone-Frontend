@@ -6,7 +6,7 @@
   
   .blur-background {
     
-    background-image: url('C:\Users\hp\OneDrive\Desktop\clone project\frontend\foodfleet\src\components\Assets\images\fresh-gourmet-meal-beef-taco-salad-plate-generated-by-ai.jpg');
+    background-image: url('C:\Users\hp\OneDrive\Desktop\clone project\frontend\foodfleet\src\components\assets\images\fresh-gourmet-meal-beef-taco-salad-plate-generated-by-ai.jpg');
     filter: blur(2px); 
     background-size: cover;
     position: absolute;
@@ -32,7 +32,7 @@
     width: 500px;
     border-radius: 20px;
     box-shadow: 2px 2px 4px 0 rgba(196, 24, 24, 0.1);
-    background-image: url('C:\Users\hp\OneDrive\Desktop\clone project\frontend\foodfleet\src\components\Assets\images\new yellow.jpg');
+    background-image: url('C:\Users\hp\OneDrive\Desktop\clone project\frontend\foodfleet\src\components\assets\images\new yellow.jpg');
     background-size: cover;
 
   }

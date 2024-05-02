@@ -1,7 +1,7 @@
 import React from 'react'
 import "./Home1.css"
 import { Button } from 'react-bootstrap'
-import newbike from "../components/Assets/images/newbike.png"
+import newbike from "../components/assets/images/newbike.png"
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 

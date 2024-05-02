@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Adminbar from './Adminbar'
 import Card from 'react-bootstrap/Card';
 import {useNavigate} from 'react-router-dom'
 
 const Adminhome = () => {
+
 
     const navigate  = useNavigate()
   return (
@@ -17,7 +18,7 @@ const Adminhome = () => {
                 <Card 
                 style={{width:'18rem'}}
                 className='mb-2 m-2 bg-success'
-                onClick={() => navigate("/users")}>
+                onClick={() => navigate("/adminusers")}>
                     <Card.Header>Users</Card.Header>
                     <Card.Body>
                         <Card.Title>Users</Card.Title>
