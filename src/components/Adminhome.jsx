@@ -3,7 +3,9 @@ import Adminbar from './Adminbar'
 import Card from 'react-bootstrap/Card';
 import {useNavigate} from 'react-router-dom'
 
+
 const Adminhome = () => {
+    const [data,setData] = useState('')
 
 
     const navigate  = useNavigate()

@@ -1,9 +1,13 @@
 import React,{useState,useEffect} from 'react'
 import {MDBTable,MDBTableBody,MDBTableHead} from 'mdb-react-ui-kit'
 import { FaRegUser } from "react-icons/fa";
+import { CiLock } from "react-icons/ci";
+import { CiUnlock } from "react-icons/ci";
+
 import Adminbar from '../Adminbar';
 import axios from "axios"
 import { toast } from 'react-toastify';
+import { Prev } from 'react-bootstrap/esm/PageItem';
 
 const AdminUsers = () => {
 
@@ -35,6 +39,32 @@ const AdminUsers = () => {
 
         fetchusers();
     },[])
+
+
+    const handlelock = async (id,isBlocked) =>{
+        
+        try{
+            const admintoken = localStorage.getItem('adminToken')
+            
+            if(!admintoken){
+                toast.error('admin token is not found')
+            } 
+            const tokenWithBearer = `Bearer ${admintoken}`
+            const url = isBlocked
+            ? `http://localhost:5000/api/admin/users/unblock/${id}` : `http://localhost:5000/api/admin/users/block/${id}`
+
+            const response = await axios.put(url,{},{headers:{Authorization:tokenWithBearer}})
+
+            setData((Prevuser) => 
+            Prevuser.map((item) =>
+            item._id === id? {...item,isBlocked:!item.isBlocked}:item
+        ))
+            console.log(response.data.message);
+            toast.success(response.data.message)
+        }catch(err){
+            console.log(err.message);
+        }
+    }
   return (
     <div className='d-flex'>
         <Adminbar />
@@ -49,6 +79,9 @@ const AdminUsers = () => {
                             <th scope='col'>name </th>
                             <th scope='col'>Email</th>
                             <th scope='col'>Phone number</th>
+                            <th scope='col'>Active</th>              
+
+
                         </tr>
                     </MDBTableHead>
 
@@ -65,6 +98,10 @@ const AdminUsers = () => {
                                 <td>{item.name}</td>
                                 <td>{item.email}</td>
                                 <td>{item.phonenumber}</td>
+                                <td>{item.isBlocked ? (<CiLock style={{color:"red", cursor:"pointer"}} onClick={() => handlelock(item._id,true)} />
+                                     ):(<CiUnlock  style={{color:"green", cursor:"pointer"}} onClick={() => handlelock(item._id,false)}/>
+                                    )}</td>
+                                
                             </tr>
                         })) : ( <p> No users found...</p>)
                     }

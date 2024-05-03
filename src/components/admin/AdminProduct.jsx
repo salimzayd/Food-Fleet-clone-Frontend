@@ -16,9 +16,11 @@ const AdminProduct = () => {
       try{
         const admintoken = localStorage.getItem('adminToken');
         const tokenWithBearer = `Bearer ${admintoken}`
-        const response = await axios.delete(`http://localhost:5000/api/admin/dishes/${_id}`,{
+        const confirm = window.confirm("do you really want to delete this dish")
+        if(confirm){
+          const response = await axios.delete(`http://localhost:5000/api/admin/dishes/${_id}`,{
           headers:{Authorization:tokenWithBearer,
-          "Content-Type":"multipart/form-data"}
+          "Content-Type":"multipart/form-data"}          
         })
         if(response.status === 200){
           const updatedDish = dish.filter((item) => item._id !== _id);
@@ -29,7 +31,7 @@ const AdminProduct = () => {
           console.log("failed to delete dish");
           toast.error("failed to delete dish")
         }
-      }catch(error){
+      }}catch(error){
         console.error("error deleting dish",error);
       }
     }
