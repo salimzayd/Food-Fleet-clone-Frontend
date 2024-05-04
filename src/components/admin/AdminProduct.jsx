@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { MdDelete } from "react-icons/md";
 import { BiEditAlt } from "react-icons/bi";
 import { useNavigate } from 'react-router-dom'
+import AdminSingleProduct from './AdminSingleProduct';
 
 const AdminProduct = () => {
 
@@ -25,7 +26,7 @@ const AdminProduct = () => {
         if(response.status === 200){
           const updatedDish = dish.filter((item) => item._id !== _id);
           setDish(updatedDish)
-          console.log(response.data.data);
+          
           toast.success("successfully deleted dish")
         }else{
           console.log("failed to delete dish");
@@ -56,7 +57,7 @@ const AdminProduct = () => {
   return (
     <div>
     <Row className='justify-content-center m-4'>
-      {dish.length > 0 ? (
+      {dish?.length > 0 ? (
         dish.map((item) =>(
           <Col key={item._id} xs={12} sm={6} md={4} lg={3} xl={3} className='mb-4' >
             <Card style={{width:"17rem"}}>
@@ -65,13 +66,13 @@ const AdminProduct = () => {
                 <Card.Title className='mt-2'>{item.title}</Card.Title>
                 <Card.Text>
                   <h2>RS {item.price}</h2>
-                  <h4 className='text-danger'>{item.category}</h4>
+                  <h4 className='text-danger '>{item.category}</h4>
                 </Card.Text>
-                {/* <Button className='bg-primary' variant='danger'>
+                <Button className='bg-primary ' variant='danger' onClick={()=>navigate(`/adminviewproduct/${item._id}`)} >
                   View Dish
-                </Button> */}
+                </Button>
                 <div className='icons'>
-                <MdDelete  style={{fontSize:"30px",color:"red"}} onClick={() => handleDelete(item._id)}/>
+                <MdDelete  style={{fontSize:"30px",color:"red", marginTop:"8 px"}} onClick={() => handleDelete(item._id)}/>
                 <BiEditAlt style={{fontSize:"30px"}}/>
                 </div>
               </Card.Body>

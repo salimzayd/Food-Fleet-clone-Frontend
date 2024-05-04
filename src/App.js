@@ -14,6 +14,7 @@ import AdminUsers from "./components/admin/AdminUsers";
 import AdminLogin from "./components/admin/AdminLogin";
 import AdminAddProduct from "./components/admin/AdminAddProduct";
 import AdminProduct from "./components/admin/AdminProduct";
+import AdminSingleProduct from "./components/admin/AdminSingleProduct";
 
 
 
@@ -38,7 +39,8 @@ function App() {
         <Route path="/adminhome" element={<Adminhome />} />
         <Route path="/adminusers" element={<AdminUsers />} />
         <Route path="/addproduct" element={<AdminAddProduct />} />
-        <Route path="adminproduct" element={<AdminProduct />} />
+        <Route path="/adminproduct" element={<AdminProduct />} />
+        <Route path="/adminviewproduct/:id" element={<AdminSingleProduct />} />
       </Routes> 
 
     </div>
