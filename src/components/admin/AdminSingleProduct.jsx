@@ -2,8 +2,15 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import {Button,Card} from 'react-bootstrap'
+import "./AdminSingleProduct.css"
+import 'aos/dist/aos.css';
+import Aos from 'aos';
 
 const AdminSingleProduct = () => {
+
+    useEffect(() =>{
+        Aos.init()
+    })
 
     const { id } = useParams()
     const [dish,setDish] = useState([]);
@@ -31,22 +38,25 @@ const AdminSingleProduct = () => {
     },[id])
     console.log(dish,"fghjk");
   return (
-    <div className='container mt-5 m-3'>
-        <div className='row justify-contnet-center align-items-center'>
-            <div className='col-md-6'>
+    <>
+            <div className='main-container'></div>
+            <div style={{ display:"flex", justifyContent:"center", alignItems:"center", width:"450px", marginLeft:"550px"}}>
                 {dish &&(
-                    <Card className='w-100'>
+                    <Card style={{marginTop:"25px", backgroundColor:"transparent", boxShadow:"10px 10px 9px black" ,height:"39rem"}}  data-aos="fade-down"
+                    data-aos-easing="linear"
+                    data-aos-duration="1500">
                         <Card.Img
                         className='mx-auto'
-                        style={{width:"15rem",height:"10rem"}}
+                        style={{width:"28rem",height:"17rem", borderRadius:"25px"}}
                         variant='top'
                         src={dish.image} />
 
                         <Card.Body className='text-center'>
 
-                            <Card.Title>{dish.title}</Card.Title>
-                            <h3 className='text-warning'>Rs {dish.price}</h3>
-                            <h3 className='text-danger'>{dish.category}</h3>
+                            <Card.Title style={{color:"black"}}>{dish.title}</Card.Title>
+                            <h3 style={{color:"gold"}}>₹{dish.price} -/</h3>
+                            <h3 style={{color:"black"}}>{dish.category}</h3>
+                            Description:<h2 style={{color:"black"}}>{dish.description}</h2>
 
                         </Card.Body>
                     </Card>
@@ -54,9 +64,10 @@ const AdminSingleProduct = () => {
                 )}
             
             </div>
-        </div>
+        </>    
         
-    </div>
+        
+      
   )
 }
 

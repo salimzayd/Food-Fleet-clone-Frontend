@@ -10,6 +10,7 @@
     "axios": "^1.6.7",
     "bootstrap": "^5.3.3",
     "cdbreact": "^1.5.19",
+    "formik": "^2.4.6",
     "mdb-react-ui-kit": "^8.0.0",
     "mdbreact": "^5.2.0",
     "react": "^18.2.0",
@@ -20,7 +21,8 @@
     "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
     "react-toastify": "^10.0.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^1.4.0"
   },
   "scripts": {
     "start": "react-scripts start",

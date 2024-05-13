@@ -1,0 +1,13 @@
+.main-container{
+    width: 100%;
+    height:730px;
+    background-image: url('C:\Users\hp\OneDrive\Desktop\clone project\frontend\foodfleet\src\components\assets\product_img\white-concrete-wall.jpg');
+    filter: blur(1.5px); 
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1; 
+}

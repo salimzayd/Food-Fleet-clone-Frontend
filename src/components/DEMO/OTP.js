@@ -23,10 +23,7 @@ const OtpVerification = () =>{
         try {
           // Send OTP
             
-            
-          
-    
-          const otpVerificationResponse = await axios.post("http://localhost:5000/api/users/verifyotp", { phonenumber, otp });
+             const otpVerificationResponse = await axios.post("http://localhost:5000/api/users/verifyOtp", { phonenumber, otp });
       
           if (otpVerificationResponse.data.success) {
             setError(null);

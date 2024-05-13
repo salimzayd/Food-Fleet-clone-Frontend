@@ -65,7 +65,7 @@ const Registration = () => {
                 })
                 .catch(error => {
                     console.log(error.response.data);
-                    toast.error("an error occured while registeration")
+                    toast.error(error.response.data.message)
                 })
                     
             

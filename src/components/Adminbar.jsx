@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import {CDBSidebar,CDBSidebarContent,CDBSidebarHeader,CDBSidebarMenu,CDBSidebarMenuItem,CDBSidebarFooter} from 'cdbreact'
 import { NavLink } from "react-router-dom";
+import {toast} from 'react-toastify'
 
 
 
 const Adminbar = () =>{
+
+    const [login,setLogin] = useState(false)
+
+    const handleLogOut = () =>{
+        localStorage.removeItem('adminToken');
+        setLogin(false)
+
+        
+        toast.success("admin logout successfully");
+        
+
+    }
 
     return(
 
@@ -45,6 +58,10 @@ const Adminbar = () =>{
 
                         <NavLink exact to="/" activeClassName="activeClicked">
                             <CDBSidebarMenuItem icon="home">Home</CDBSidebarMenuItem>
+                        </NavLink>
+
+                        <NavLink exact to="/" activeClassName="activeClicked" onClick={handleLogOut} style={{color:"red"}}>
+                            <CDBSidebarMenuItem icon="log" >Logout</CDBSidebarMenuItem>
                         </NavLink>
                     </CDBSidebarMenu>
                 </CDBSidebarContent>

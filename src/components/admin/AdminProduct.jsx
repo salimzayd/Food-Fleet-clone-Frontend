@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 import { MdDelete } from "react-icons/md";
 import { BiEditAlt } from "react-icons/bi";
 import { useNavigate } from 'react-router-dom'
-import AdminSingleProduct from './AdminSingleProduct';
 
 const AdminProduct = () => {
 
@@ -65,7 +64,7 @@ const AdminProduct = () => {
               <Card.Body className='text-center'>
                 <Card.Title className='mt-2'>{item.title}</Card.Title>
                 <Card.Text>
-                  <h2>RS {item.price}</h2>
+                  <h2>₹{item.price} -/</h2>
                   <h4 className='text-danger '>{item.category}</h4>
                 </Card.Text>
                 <Button className='bg-primary ' variant='danger' onClick={()=>navigate(`/adminviewproduct/${item._id}`)} >

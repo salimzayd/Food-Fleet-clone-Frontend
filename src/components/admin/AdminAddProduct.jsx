@@ -8,7 +8,8 @@ const AdminAddProduct = () => {
         title:"",
         category:"",
         image:"",
-        price:""
+        price:"",
+        description:"",
     })
 
     const handleChange = (e) =>{
@@ -52,7 +53,8 @@ const AdminAddProduct = () => {
                 title:"",
                 category:"",
                 image:"",
-                price:""
+                price:"",
+                description:"",
             })
         }else{
             toast.error(response.data.message || "error submitting form")
@@ -103,6 +105,15 @@ const AdminAddProduct = () => {
                         </label>
                         <div className='col-sm-10'>
                             <input type='number' id='price' className='form-control' value={formData.price} onChange={handleChange} required></input>
+                        </div>
+                    </div>
+
+                    <div className='mb-3 row'>
+                        <label htmlFor='description' className='col-sm-2 col-form-label'>
+                            Description:
+                        </label>
+                        <div className='col-sm-10'>
+                            <textarea type='text' id='description' className='form-control' value={formData.description} onChange={handleChange} required></textarea>
                         </div>
                     </div>
 

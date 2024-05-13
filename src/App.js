@@ -1,9 +1,9 @@
 import { Routes,Route } from "react-router-dom";
-import About from "./common/About";
-import NAVbar from "./common/navbar";
+import About from "./components/About"
+import NAVbar from "./components/navbar";
 import Login from "./components/Login";
 import Registration from "./components/Registration";
-import Home1 from "./common/Home1";
+import Home1 from "./components/Home1";
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import OTP from "./components/demo/OTP"
@@ -15,6 +15,7 @@ import AdminLogin from "./components/admin/AdminLogin";
 import AdminAddProduct from "./components/admin/AdminAddProduct";
 import AdminProduct from "./components/admin/AdminProduct";
 import AdminSingleProduct from "./components/admin/AdminSingleProduct";
+import ViewDish from "./components/viewDish";
 
 
 
@@ -22,7 +23,6 @@ function App() {
   return (
     <div className="App">
       <ToastContainer />
-      
       
       <NAVbar />
 
@@ -35,6 +35,7 @@ function App() {
         <Route path="/register" element={<Registration /> } />
         <Route path="/otpverification" element={<OTP /> } />
         <Route path="/login" element={<Login /> } />
+        <Route path="/singledish/:id" element={<ViewDish />} />
         <Route path="/adminlogin" element={<AdminLogin />} />
         <Route path="/adminhome" element={<Adminhome />} />
         <Route path="/adminusers" element={<AdminUsers />} />
