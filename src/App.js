@@ -16,6 +16,7 @@ import AdminAddProduct from "./components/admin/AdminAddProduct";
 import AdminProduct from "./components/admin/AdminProduct";
 import AdminSingleProduct from "./components/admin/AdminSingleProduct";
 import ViewDish from "./components/viewDish";
+import AdminEdit from "./components/admin/AdminEditProduct";
 
 
 
@@ -42,6 +43,7 @@ function App() {
         <Route path="/addproduct" element={<AdminAddProduct />} />
         <Route path="/adminproduct" element={<AdminProduct />} />
         <Route path="/adminviewproduct/:id" element={<AdminSingleProduct />} />
+        <Route path="/admineditproduct/:id" element={<AdminEdit />} />
       </Routes> 
 
     </div>

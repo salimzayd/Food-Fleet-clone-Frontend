@@ -72,7 +72,7 @@ const AdminProduct = () => {
                 </Button>
                 <div className='icons'>
                 <MdDelete  style={{fontSize:"30px",color:"red", marginTop:"8 px"}} onClick={() => handleDelete(item._id)}/>
-                <BiEditAlt style={{fontSize:"30px"}}/>
+                <BiEditAlt style={{fontSize:"30px",  cursor:"pointer"}} onClick={() => navigate(`/admineditproduct/${item._id}`)}/>
                 </div>
               </Card.Body>
             </Card>
