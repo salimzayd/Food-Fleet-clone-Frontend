@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap'
 import newbike from "../components/assets/images/newbike.png"
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import Contactus from './Contactus'
 
 
 const Home1 = () => {
@@ -27,9 +28,9 @@ const Home1 = () => {
 
 </div>
 </div>  
-    
+    {/* <Contactus /> */}
     </>
   )
 }
 
-export default Home1
+export default Home1;

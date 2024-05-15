@@ -29,15 +29,16 @@ const NAVbar = () => {
               <LinkContainer to="/" >
                 <Nav.Link>HOME </Nav.Link>
               </LinkContainer>
+               <LinkContainer to="/dishes" >
+                <Nav.Link>DISHES</Nav.Link>
+              </LinkContainer>
               <LinkContainer to="/about" >
                 <Nav.Link>ABOUT US </Nav.Link>
               </LinkContainer>
               <LinkContainer to="/contact" >
                 <Nav.Link>CONTACT US </Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/dishes" >
-                <Nav.Link>DISHES</Nav.Link>
-              </LinkContainer>
+             
             </Nav>
           </Navbar.Collapse>
         </Container>
