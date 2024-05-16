@@ -84,7 +84,7 @@ ul {
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
-    height: 600px;
+    height: 700px;
 
 }
 
@@ -109,8 +109,32 @@ ul {
     color: white;
     max-width:  85%;
     font-size: larger;
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     padding-left: 170px;
+}
+.main-cn{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 40px;
+}
+.cards{
+  width: 300px;
+  height: 250px;
+  background-color: #eef2f1;
+  color: black;
+  border-radius: 5px;
+}
+.cr-icon{
+  color: skyblue;
+  display: flex;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+}
+.cr-contents{
+  margin-top: 80px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
