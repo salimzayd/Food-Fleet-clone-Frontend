@@ -5,6 +5,7 @@ import newbike from "../components/assets/images/newbike.png"
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import Contactus from './Contactus'
+import Payment from './Payment'
 
 
 const Home1 = () => {
@@ -29,6 +30,7 @@ const Home1 = () => {
 </div>
 </div>  
     {/* <Contactus /> */}
+    <Payment />
     </>
   )
 }

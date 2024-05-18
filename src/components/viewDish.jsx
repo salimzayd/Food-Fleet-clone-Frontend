@@ -1,9 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useReducer } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import { Button, Card } from 'react-bootstrap';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+
+
+const initialqnty = 1;
+const reducer = (state,action) =>{
+    switch(action){
+        case 'increment':
+            return state + 1
+        case 'decrement':
+           if(state > 1){
+            return state - 1
+           }
+        default :
+        return state         
+    }
+}
 
 const ViewDish = () => {
 
@@ -32,6 +47,12 @@ const ViewDish = () => {
         }
         fetchdish()
     },[id])
+
+   
+
+    
+        const [count,dispatch] = useReducer(reducer,initialqnty)
+    
   return (
 <>
 <div style={{height:"680px", backgroundColor:"#040D12"}} >
@@ -48,9 +69,15 @@ const ViewDish = () => {
                         <Card.Body className='text-center'>
 
                             <Card.Title style={{color:"white"}}>{dish.title}</Card.Title>
-                            <h3 style={{color:"gold"}}>₹{dish.price}-/</h3>
+                            <h3 style={{color:"gold"}}>₹{dish.price * count}-/</h3>
                             <h3 style={{color:"white"}}>{dish.category}</h3>
-                        
+                            <h3 style={{color:"#8DECB4"}}>quantity:{count}</h3>
+                            <div>
+                            <button onClick={() => dispatch('increment')} style={{width:"50px", height:"30px", borderRadius:"10px", color:"black", backgroundColor:"#FFFF80", border:"0px", marginRight:"15px", fontSize:"larger"}}>
+                                 + </button>
+                            <button onClick={() => dispatch('decrement')} style={{width:"50px", height:"30px", borderRadius:"10px", color:"black", backgroundColor:"#C40C0C", border:"0px", fontSize:"larger"}}> - </button>
+                            </div>
+                            
                             <div style={{backgroundColor:"#282A3A", width:"350px", height:"180px", color:"white"}}>
                                 Description:<h4>{dish.description}</h4>
 

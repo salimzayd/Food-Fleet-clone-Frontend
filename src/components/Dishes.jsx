@@ -3,26 +3,28 @@ import {Button,Card,Col,Navbar,Row} from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import axios from "axios";
-// import AOS from 'aos';
-// import 'aos/dist/aos.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { toast } from "react-toastify";
 
 
 
 const Dishes = () =>{
+    
 
-    // useEffect(() =>{
-    //     AOS.init()
-    // })
+    useEffect(() =>{
+        AOS.init()
+    })
     const navigate  = useNavigate()
 
     const [dishes,setDishes] = useState([])
+    const [btn,setBtn] =  useState(true)
 
 
 
     useEffect(() => {
         const fetchDishes = async () => {
             try{
-
                 const usertoken = localStorage.getItem('token')
                 const tokenWithBearer = `Bearer ${usertoken}`
                 const response = await axios.get('http://localhost:5000/api/users/dishes',{
@@ -39,6 +41,24 @@ const Dishes = () =>{
         fetchDishes()
     },[])
 
+    // const handleaddcart = async () => {
+    //     try{
+
+    //         const userid = localStorage.getItem('userId')
+    //         const usertoken = localStorage.getItem('token');
+    //         const tokenWithBearer = `Bearer ${usertoken}`
+    //         const response = await axios.post(`http://localhost:5000/api/users/cart/${userid}`,{headers:
+    //         {Authorization:tokenWithBearer}
+    //         })
+    //         if(response.status === 200){
+    //             toast.success("dish added to cart successfully")
+    //             setBtn(false)
+    //         }
+
+    //     }catch(error){
+    //         console.error(error);
+    // }
+    // }
      return(
         <div>
            <div className='d-flex mx-8 mt-3 ' style={{justifyContent:"center"}}>    
@@ -63,6 +83,16 @@ const Dishes = () =>{
                             <Button className="bg-primary" variant="danger" onClick={() => navigate(`/singledish/${item._id}`)}>
                                 View Dish
                             </Button>
+                            
+                            {/* {btn ? (
+                  <Button className='bg-success' variant='primary' style={{marginLeft:"5px"}} onClick={handleaddcart}>
+                    Add to Cart
+                  </Button>
+                ) : (
+                  <Button className='bg-danger' variant='primary' >
+                    Go To Cart
+                  </Button>
+                )} */}
                         </Card.Body>
                     </Card>
                 </Col>

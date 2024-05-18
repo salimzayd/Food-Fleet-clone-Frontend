@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import Adminbar from './Adminbar'
 import Card from 'react-bootstrap/Card';
 import {useNavigate} from 'react-router-dom'
+import AdminBar from './Adminbar';
 
 
 const Adminhome = () => {
@@ -12,7 +12,7 @@ const Adminhome = () => {
   return (
     <div className='d-flex bg-secondary w-100'>
         <div>
-            <Adminbar />
+            <AdminBar />
         </div>
 
         <div className='d-flex mt-5'>

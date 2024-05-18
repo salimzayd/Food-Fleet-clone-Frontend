@@ -20,14 +20,15 @@ const Login = () => {
 
     }
 
-    const handleLogin = (token) =>{
+    const handleLogin = (token,userId) =>{
         localStorage.setItem("token",token)
         console.log(token,"sdfghjk");
+        localStorage.setItem("userId",userId)
+        console.log(userId,"dfg");
         navigate('/')
         toast.success("login successfull")
     }
     const handleSubmit = async  (e) =>{
-
         e.preventDefault()
         try{
        const response =  await axios.post("http://localhost:5000/api/users/login",{
@@ -38,8 +39,8 @@ const Login = () => {
        });
        console.log(response.data);
 
-       const {token} = response.data
-       handleLogin(token)
+       const {token,user} = response.data
+       handleLogin(token,user._id)
     }catch(error){
         console.log(error);
         toast.error("an error occured while log in");
