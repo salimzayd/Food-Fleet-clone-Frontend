@@ -1,0 +1,30 @@
+.result-cntnt{
+    box-shadow: 1px 8px 8px black;
+    width: 600px;
+    height: 500px;
+    border-radius: 20px;
+
+    
+}
+.result-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;
+    
+}
+.result-cntnt p{
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: larger;
+}
+.result-cntnt img{
+    margin-left: 100px;
+    border-radius: 20px;
+    width:380px;
+    height: 300px;
+    
+}

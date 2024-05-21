@@ -29,7 +29,7 @@ const AdminProduct = () => {
           toast.success("successfully deleted dish")
         }else{
           console.log("failed to delete dish");
-          toast.error("failed to delete dish")
+          toast.error("failed to delete dish");
         }
       }}catch(error){
         console.error("error deleting dish",error);

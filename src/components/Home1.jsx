@@ -30,7 +30,8 @@ const Home1 = () => {
 </div>
 </div>  
     {/* <Contactus /> */}
-    <Payment />
+    {/* <Payment /> */}
+  
     </>
   )
 }

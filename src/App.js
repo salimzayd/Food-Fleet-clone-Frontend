@@ -18,6 +18,7 @@ import AdminSingleProduct from "./components/admin/AdminSingleProduct";
 import ViewDish from "./components/viewDish";
 import AdminEdit from "./components/admin/AdminEditProduct";
 import Contactus from "./components/Contactus";
+import Search from "./components/Search";
 
 
 
@@ -46,6 +47,8 @@ function App() {
         <Route path="/adminproduct" element={<AdminProduct />} />
         <Route path="/adminviewproduct/:id" element={<AdminSingleProduct />} />
         <Route path="/admineditproduct/:id" element={<AdminEdit />} />
+        <Route path="/search" element={<Search />} />
+        
       </Routes> 
     
 

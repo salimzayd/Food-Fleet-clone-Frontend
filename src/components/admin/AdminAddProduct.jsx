@@ -11,6 +11,41 @@ const AdminAddProduct = () => {
         price:"",
         description:"",
     })
+    const [error,setError] = useState({})
+
+    const validform = () =>{
+        let error = {}
+        let isvalid = true;
+
+        if(!formData.title.trim()){
+            error.name = 'title is required';
+            isvalid = false
+        }
+
+        if(!formData.category.trim()){
+            error.name = 'category is required';
+            isvalid = false
+        }
+
+        // if(!formData.image.trim()){
+        //     error.name = 'image is required';
+        //     isvalid = false
+        // }
+
+        if(!formData.price.trim()){
+            error.name= 'price is required'
+            isvalid= false
+        }
+
+        if(!formData.description.trim()){
+            error.name = 'description is required';
+            isvalid = false
+        }
+
+            setError(error);
+            return isvalid;
+        
+    }
 
     const handleChange = (e) =>{
         const {id, value} = e.target;
@@ -30,38 +65,40 @@ const AdminAddProduct = () => {
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
-
-        try{
-            const adminToken = localStorage.getItem("adminToken")
-
-            if(!adminToken){
-                toast.error("Admin token not found")
-                return;
+        if(validform()){
+            try{
+                const adminToken = localStorage.getItem("adminToken")
+    
+                if(!adminToken){
+                    toast.error("Admin token not found")
+                    return;
+                }
+                const tokenWithBearer = `Bearer ${adminToken}`
+    
+                const response = await axios.post("http://localhost:5000/api/admin/product",formData,
+            {
+                headers:{Authorization:tokenWithBearer,
+                "Content-Type":"multipart/form-data",}
+            });
+    
+            if(response.status === 201){
+                toast.success(response.data.message);
+    
+                setFormData({
+                    title:"",
+                    category:"",
+                    image:"",
+                    price:"",
+                    description:"",
+                })
+            }else{
+                toast.error(response.data.message || "error submitting form")
             }
-            const tokenWithBearer = `Bearer ${adminToken}`
-
-            const response = await axios.post("http://localhost:5000/api/admin/product",formData,
-        {
-            headers:{Authorization:tokenWithBearer,
-            "Content-Type":"multipart/form-data",}
-        });
-
-        if(response.status === 201){
-            toast.success(response.data.message);
-
-            setFormData({
-                title:"",
-                category:"",
-                image:"",
-                price:"",
-                description:"",
-            })
-        }else{
-            toast.error(response.data.message || "error submitting form")
+            }catch(error){
+                console.error("error",error)
+            }
         }
-        }catch(error){
-            console.error("error",error)
-        }
+       
     }
   return (
 
@@ -77,7 +114,8 @@ const AdminAddProduct = () => {
                             Title:
                         </label>
                         <div className='col-sm-10'>
-                            <input type='text' id='title' className='form-control' value={formData.title} onChange={handleChange} required></input>
+                            <input type='text' id='title' className='form-control' value={formData.title} onChange={handleChange} required ></input>
+                            {error.title && <div className='error'>{error.title}</div>}
                         </div>
                     </div>
 
@@ -87,6 +125,8 @@ const AdminAddProduct = () => {
                         </label>
                         <div className='col-sm-10'>
                             <input type='text' id='category' className='form-control' value={formData.category} onChange={handleChange} required></input>
+                            {error.category && <div className='error'>{error.category}</div>}
+
                         </div>
                     </div>
 
@@ -96,6 +136,8 @@ const AdminAddProduct = () => {
                         </label>
                             <div className='col-sm-10'>
                                 <input type='file' id='image' className='form-control'  onChange={handleImageChange} required></input>
+                            {error.image && <div className='error'>{error.image}</div>}
+
                             </div>
                     </div>
 
@@ -105,6 +147,8 @@ const AdminAddProduct = () => {
                         </label>
                         <div className='col-sm-10'>
                             <input type='number' id='price' className='form-control' value={formData.price} onChange={handleChange} required></input>
+                            {error.price && <div className='error'>{error.price}</div>}
+
                         </div>
                     </div>
 
@@ -114,6 +158,8 @@ const AdminAddProduct = () => {
                         </label>
                         <div className='col-sm-10'>
                             <textarea type='text' id='description' className='form-control' value={formData.description} onChange={handleChange} required></textarea>
+                            {error.description && <div className='error'>{error.description}</div>}
+
                         </div>
                     </div>
 

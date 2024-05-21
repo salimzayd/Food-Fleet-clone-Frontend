@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import {Button,Card,Col,Navbar,Row} from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import { BsSearch } from "react-icons/bs";
+import {Button,Card,Col,Row} from "react-bootstrap";
+import {  useNavigate } from "react-router-dom";
 import axios from "axios";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { toast } from "react-toastify";
+
 
 
 
@@ -18,8 +17,15 @@ const Dishes = () =>{
     const navigate  = useNavigate()
 
     const [dishes,setDishes] = useState([])
-    const [btn,setBtn] =  useState(true)
+    // const [btn,setBtn] =  useState(true);
+    const [search,setSearch] = useState({})
 
+    
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        navigate(`/search?title=${search.title}`);
+    };
 
 
     useEffect(() => {
@@ -41,30 +47,22 @@ const Dishes = () =>{
         fetchDishes()
     },[])
 
-    // const handleaddcart = async () => {
-    //     try{
 
-    //         const userid = localStorage.getItem('userId')
-    //         const usertoken = localStorage.getItem('token');
-    //         const tokenWithBearer = `Bearer ${usertoken}`
-    //         const response = await axios.post(`http://localhost:5000/api/users/cart/${userid}`,{headers:
-    //         {Authorization:tokenWithBearer}
-    //         })
-    //         if(response.status === 200){
-    //             toast.success("dish added to cart successfully")
-    //             setBtn(false)
-    //         }
-
-    //     }catch(error){
-    //         console.error(error);
-    // }
-    // }
      return(
         <div>
            <div className='d-flex mx-8 mt-3 ' style={{justifyContent:"center"}}>    
-             <form class="form-inline "  >
-
-            <input class="form-control mr-sm-10 bg-white"  style={{width:"20rem"}}  type="search" placeholder="Search here" aria-label="Search"/>
+           <form onSubmit={handleSearch}>
+                {/* <CiSearch onClick={handleSearch} /> */}
+                <input
+                    type="text"
+                    placeholder="Search here"
+                    value={search.title}
+                    onChange={(e) => setSearch({ title: e.target.value })}
+                    style={{width:"250px", height:"30px" }}
+                />
+                <button type="submit" style={{width:"50px", height:"30px",border:"0px", borderRadius:"10px", marginLeft:"5px",
+                    color:"red"
+                }}>Search</button>
             </form>
         </div>
 
