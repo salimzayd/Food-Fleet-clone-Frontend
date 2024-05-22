@@ -27,13 +27,21 @@ const OtpVerification = () =>{
       
           if (otpVerificationResponse.data.success) {
             setError(null);
-            // If OTP verified, proceed with registration
             try {
               const response = await axios.post("http://localhost:5000/api/users/register", formdata, { headers: { "Content-Type": "application/json" } });
       
               if (response.data.success) {
-                // If registration successful, navigate to login
+
+                const name = formdata.name
+                const email = formdata.email
+                const phonenumber = formdata.phonenumber
+
                 navigate("/login");
+                localStorage.setItem('name',name)
+                localStorage.setItem('email',email)
+                localStorage.setItem('phonenumber',phonenumber)
+                console.log(email,phonenumber);
+
               } else {
                 setError(response.data.message);
               }

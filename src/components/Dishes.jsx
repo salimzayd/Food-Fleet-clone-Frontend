@@ -66,7 +66,7 @@ const Dishes = () =>{
             </form>
         </div>
 
-            <Row className="justify-content-center m-4" style={{backgroundColor:"#040D12"}}>
+            <Row className="justify-content-center m-4">
             { dishes.length > 0 ? (
             dishes.map((item) => (
                 <Col key={item._id} xs={12} sm={6} md={4} lg={3} xl={3} className="mb-4">
