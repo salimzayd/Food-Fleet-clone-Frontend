@@ -37,6 +37,10 @@ const ViewDish = () => {
 
                const usertoken = localStorage.getItem('token')
                const tokenWithBearer = `Bearer ${usertoken}`
+               if(!usertoken){
+                toast.error("your are not login !!")
+                navigate('/login')
+               }
                const response = await axios.get(`http://localhost:5000/api/users/dishes/${id}`,{
                 headers:{Authorization:tokenWithBearer}
                }) 

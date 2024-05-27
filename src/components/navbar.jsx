@@ -5,22 +5,22 @@ import { Link, useNavigate } from 'react-router-dom';
 import { MdAdminPanelSettings } from "react-icons/md";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { toast } from 'react-toastify';
 
 const NAVbar = () => {
  
-  
+  const name = localStorage.getItem('name')
 
   const navigate = useNavigate()
 
   useEffect(() =>{
     AOS.init()
-  })
+  },[])
 
   const handleLogout = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('name')
-    toast.success("removed user")
+    // toast.success("removed user")
+    navigate('/')
   }
   return (
     <>
@@ -32,6 +32,21 @@ const NAVbar = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className='ms-auto'>
+            <NavDropdown
+              title={name ? <>{name}</> : <>Login</>}
+              id='responsive-nav'
+              >
+                {!name && (
+                  <NavDropdown.Item onClick={() => navigate('/login')}>
+                  Login
+                </NavDropdown.Item>
+                )}
+                {name && (
+                  <NavDropdown.Item onClick={handleLogout}>
+                  Logout
+                </NavDropdown.Item>
+                )}
+              </NavDropdown>
               <LinkContainer to='/adminlogin'>
                 <Nav.Link>
                   <MdAdminPanelSettings style={{ width: "30px", height: "30px" }} />
@@ -49,17 +64,7 @@ const NAVbar = () => {
               <LinkContainer to="/contact" >
                 <Nav.Link>CONTACT US </Nav.Link>
               </LinkContainer>
-              <NavDropdown
-              // title={}
-              id='responsive-nav'
-              >
-                <NavDropdown.Item onClick={() => navigate('/login')}>
-                  Login
-                </NavDropdown.Item>
-                <NavDropdown.Item onClick={handleLogout}>
-                  Logout
-                </NavDropdown.Item>
-              </NavDropdown>
+              
              
             </Nav>
           </Navbar.Collapse>

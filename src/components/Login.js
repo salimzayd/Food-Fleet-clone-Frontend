@@ -20,11 +20,15 @@ const Login = () => {
 
     }
 
-    const handleLogin = (token,userId) =>{
+    const handleLogin = (token, userDetails) =>{
+        const {userId, name, email, phonenumber} = userDetails;
+        console.log("Details: ",userDetails);
+        
         localStorage.setItem("token",token)
-        console.log(token,"sdfghjk");
         localStorage.setItem("userId",userId)
-        console.log(userId,"dfg");
+        localStorage.setItem("name",name)
+        localStorage.setItem("email",email)
+        localStorage.setItem("phonenumber",phonenumber)
         navigate('/')
         toast.success("login successfull")
     }
@@ -40,10 +44,10 @@ const Login = () => {
        console.log(response.data);
 
        const {token,user} = response.data
-       handleLogin(token,user._id)
+       handleLogin(token,user)
     }catch(error){
         console.log(error);
-        toast.error("an error occured while log in");
+        toast.error(error.message);
     }   
     }
 

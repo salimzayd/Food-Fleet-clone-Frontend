@@ -32,15 +32,8 @@ const OtpVerification = () =>{
       
               if (response.data.success) {
 
-                const name = formdata.name
-                const email = formdata.email
-                const phonenumber = formdata.phonenumber
 
                 navigate("/login");
-                localStorage.setItem('name',name)
-                localStorage.setItem('email',email)
-                localStorage.setItem('phonenumber',phonenumber)
-                console.log(email,phonenumber);
 
               } else {
                 setError(response.data.message);
