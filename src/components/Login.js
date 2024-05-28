@@ -21,11 +21,11 @@ const Login = () => {
     }
 
     const handleLogin = (token, userDetails) =>{
-        const {userId, name, email, phonenumber} = userDetails;
+        const {_id, name, email, phonenumber} = userDetails;
         console.log("Details: ",userDetails);
         
         localStorage.setItem("token",token)
-        localStorage.setItem("userId",userId)
+        localStorage.setItem("_id",_id)
         localStorage.setItem("name",name)
         localStorage.setItem("email",email)
         localStorage.setItem("phonenumber",phonenumber)
@@ -47,7 +47,7 @@ const Login = () => {
        handleLogin(token,user)
     }catch(error){
         console.log(error);
-        toast.error(error.message);
+        toast.error(error.response.data.message);
     }   
     }
 

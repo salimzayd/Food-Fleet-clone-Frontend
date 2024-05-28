@@ -1,0 +1,87 @@
+
+  
+  .form-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .photo-container {
+    margin-bottom: 20px;
+    cursor: pointer;
+    /* width: 120px;
+    height: 120px;
+    background-color: #ced4da; */
+  }
+  
+  .profile-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #007bff;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form input {
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .submit-button, .delete-button {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .submit-button {
+    background-color: #007bff;
+    color: #ffffff;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .delete-button {
+    background-color: #dc3545;
+    color: #ffffff;
+  }
+  
+  .delete-button:hover {
+    background-color: #c82333;
+  }
+  
+  @media (max-width: 768px) {
+    .form-container {
+      padding: 15px;
+    }
+  
+    .profile-photo {
+      width: 80px;
+      height: 80px;
+    }
+  
+    .form input {
+      font-size: 14px;
+    }
+  
+    .submit-button, .delete-button {
+      font-size: 14px;
+    }
+  }
+  

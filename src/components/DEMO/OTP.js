@@ -64,7 +64,7 @@ const OtpVerification = () =>{
             onChange={(e) => setOtp(e.target.value)} required />
 
 
-            <button type="submit">Verify</button>
+            <button type="submit" className="otp-btn">Verify</button>
             </form>
             {error && <div className="form">{error}</div>}
 

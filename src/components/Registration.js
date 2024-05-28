@@ -10,7 +10,8 @@ const Registration = () => {
         name:'',
         email:'',
         phonenumber:'',
-        password:''
+        password:'',
+        image:''
     })
     const [error,setError] = useState({})
     const navi = useNavigate();
@@ -79,6 +80,8 @@ const Registration = () => {
         <div className='rounded shadow p-3 mb-5 ' style={{width:"25rem"}}>
             <form onSubmit={onSubmition}>
                 <h1 className='mt-3' style={{fontFamily:"inherit"}}>SIGN UP </h1>
+
+                
 
                 <input className='form-control mt-3 ' 
                 type='text' 

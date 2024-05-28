@@ -46,6 +46,9 @@ const NAVbar = () => {
                   Logout
                 </NavDropdown.Item>
                 )}
+                <NavDropdown.Item onClick={() => navigate(`/profile`)}>
+                  user Profile
+                </NavDropdown.Item>
               </NavDropdown>
               <LinkContainer to='/adminlogin'>
                 <Nav.Link>
