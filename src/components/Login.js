@@ -4,9 +4,11 @@ import { Link, useNavigate } from 'react-router-dom'
 import "./Login.css"
 import { toast } from 'react-toastify'
 import axios from 'axios'
+import {RotateLoader} from 'react-spinners'
 
 const Login = () => {
 
+    const[loading,setLoading] = useState(false)
     const [formdata,setFormdata] = useState({
         email:'',
         password:''
@@ -33,6 +35,7 @@ const Login = () => {
         toast.success("login successfull")
     }
     const handleSubmit = async  (e) =>{
+        setLoading(true)
         e.preventDefault()
         try{
        const response =  await axios.post("http://localhost:5000/api/users/login",{
@@ -49,6 +52,7 @@ const Login = () => {
         console.log(error);
         toast.error(error.response.data.message);
     }   
+    setLoading(false)
     }
 
   return (
@@ -67,7 +71,11 @@ const Login = () => {
                 </FormGroup>
 
 
-                <Button variant='success' type='submit' >Login</Button>
+                <Button variant='success' type='submit' >
+                    {loading ?(
+                        <RotateLoader color='#41B06E' loading={loading} style={{alignItems:"center"}}/>
+                    ):<>Login</>}
+                </Button>
             </Form>
 
             <Row>

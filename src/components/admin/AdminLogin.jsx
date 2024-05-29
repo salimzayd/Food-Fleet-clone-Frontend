@@ -3,11 +3,14 @@ import { useNavigate } from 'react-router-dom'
 import {Col,Row,Button,Container} from 'react-bootstrap'
 import axios from 'axios'
 import {toast} from 'react-toastify'
+import AdminInstance from '../axiosinterceptors/Adminaxiosinterceptor'
+import {PulseLoader} from 'react-spinners'
 
 function AdminLogin (){
 
     const [login,setLogin] = useState({email:"",
 password:""});
+const [loading,setLoading] = useState(false)
 const navigate = useNavigate()
 
 const handleInputChange = (e) =>{
@@ -18,9 +21,10 @@ const handleInputChange = (e) =>{
 
 const handleSubmit = async (e) =>{
     e.preventDefault();
+    setLoading(true)
 
     try{
-        const response = await axios.post("http://localhost:5000/api/admin/login",login);
+        const response = await AdminInstance.post("/login",login);
         const {data} = response.data
         console.log("login successfull",data);
 
@@ -31,6 +35,7 @@ const handleSubmit = async (e) =>{
         console.error("login failed",error.response.data)
         toast.error("An error occured during log in")
     }
+    setLoading(false)
 }
   return (
 
@@ -63,7 +68,9 @@ const handleSubmit = async (e) =>{
                 <Row className='mb-3'>
                     <Col>
                     <Button variant='success' block type='submit'>
-                        Login
+                    {loading ? (
+                        <PulseLoader color='#fff' loading={loading} size={5} style={{alignItems:"center"}} />
+                    ): <>Login</>}
                     </Button>
                     </Col>
                 </Row>

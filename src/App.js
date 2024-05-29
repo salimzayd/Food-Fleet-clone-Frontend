@@ -20,6 +20,7 @@ import AdminEdit from "./components/admin/AdminEditProduct";
 import Contactus from "./components/Contactus";
 import Search from "./components/Search";
 import UserProfile from "./components/userProfile";
+import Order from "./components/Order";
 
 
 
@@ -38,7 +39,7 @@ function App() {
          <Route path="/dishes" element={<Dishes />} />
         <Route path="/register" element={<Registration /> } />
         <Route path="/contact" element={<Contactus />} />
-        <Route path="/otpverification" element={<OTP /> } />
+        {/* <Route path="/otpverification" element={<OTP /> } /> */}
         <Route path="/login" element={<Login /> } />
         <Route path="/singledish/:id" element={<ViewDish />} />
         <Route path="/adminlogin" element={<AdminLogin />} />
@@ -50,6 +51,7 @@ function App() {
         <Route path="/admineditproduct/:id" element={<AdminEdit />} />
         <Route path="/search" element={<Search />} />
         <Route path="/profile" element={<UserProfile />} />
+        <Route path="/order/:id" element={<Order />} />
         
       </Routes> 
     

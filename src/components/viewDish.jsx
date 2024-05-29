@@ -5,6 +5,7 @@ import { Button, Card } from 'react-bootstrap';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { toast } from 'react-toastify';
+import {SyncLoader} from 'react-spinners'
 
 
 const initialqnty = 1;
@@ -22,13 +23,15 @@ const reducer = (state,action) =>{
 }
 
 const ViewDish = () => {
-
+    
+  const [loading,setLoading] = useState(false)
     const navigate = useNavigate()
     useEffect(() =>{
         AOS.init()
     })
 
     const {id} = useParams();
+    console.log(id);
     const[dish,setDish] = useState(null);
 
     useEffect(() =>{
@@ -55,65 +58,71 @@ const ViewDish = () => {
     },[id])
 
     const [count,dispatch] = useReducer(reducer,initialqnty)
-    const totalAmount = dish?.price ?? 0;
+    const totalAmount = dish?.price  ?? 0 ;
 
-    const handlePayment = async () =>{
-        try{
-
-            const usertoken = localStorage.getItem('token');
-            const name = localStorage.getItem('name');
-            // const phone = localStorage.getItem('phonenumber');
-
-            if(!usertoken){
-                console.log('token not found');
-                return
+    const handlePayment = async () => {
+      setLoading(true)
+        try {
+          const usertoken = localStorage.getItem('token');
+          const name = localStorage.getItem('name');
+          const userid = localStorage.getItem('_id');
+      
+          if (!usertoken) {
+            console.log('Token not found');
+            return;
+          }
+          const tokenWithBearer = `Bearer ${usertoken}`;
+      
+          const orderresponse = await axios.post('http://localhost:5000/api/users/order', {
+            userId: userid,
+            productIds: id,
+            amount: totalAmount ,
+            currency: "INR"
+          }, {
+            headers: { Authorization: tokenWithBearer }
+          });
+      
+          const { payment_id, _id: orderId } = orderresponse.data.data;
+          const amountttl = totalAmount * count
+          const response = await axios.post('http://localhost:5000/api/users/payment', {
+            amount: amountttl * 100,
+            currency: "INR",
+            receipt: `receipt_${Date.now()}`,
+            payment_id
+          }, {
+            headers: { Authorization: tokenWithBearer }
+          });
+      
+          const { data } = response.data;
+          const options = {
+            key: 'rzp_test_OIASTmyhpwu5GD',
+            amount: data.amount,
+            currency: data.currency,
+            name: "FOODFLEET",
+            description: "Test transaction",
+            image: dish.image,
+            order_id: data.id,
+            handler: () => {
+              toast.success("Payment successful");
+              navigate(`/order/${orderId}`);
+            },
+            prefill: {
+              name: name,
+            },
+            theme: {
+              color: "#3399cc"
             }
-
-            const tokenWithBearer = `Bearer ${usertoken}`;
-            console.log('sending payment request:',{amount:totalAmount * 100,
-                currency:"INR",
-                receipt:`receipt_${Date.now()}`
-            });
-
-            const response = await axios.post('http://localhost:5000/api/users/payment',{
-                amount:totalAmount * 100,
-                currency:"INR",
-                receipt:`reciept_${Date.now()}`
-            },{headers:{Authorization:tokenWithBearer}});
-
-            console.log('payment response', response.data);
-
-            const {data} = response.data;
-            const options = {
-                key:'rzp_test_OIASTmyhpwu5GD',
-                amount:data.amount,
-                currency:data.currency,
-                name:"FOODFLEET",
-                description:"test transaction",
-                image:dish.image,
-                order_id:data.id,
-                handler: (() => {
-                    toast.success("Payment successfully");
-                    // navigate('')
-                }),
-                prefill:{
-                    name:name,
-                    // phone:
-                    
-
-                },
-                theme:{
-                    color:"#3399cc"
-                }
-            };
-
-            const rzpay = new window.Razorpay(options);
-            rzpay.open();
-        }catch(error){
-            console.error("payment failed",error);
-            toast.error("payment failed.please try again later")
+          };
+      
+          const rzpay = new window.Razorpay(options);
+          rzpay.open();
+        } catch (error) {
+          console.error("Payment failed", error);
+          toast.error("Payment failed. Please try again later");
         }
-    }
+        setLoading(false)
+      };
+      
   return (
 <>
 <div style={{height:"680px", backgroundColor:"#040D12"}} >
@@ -143,7 +152,11 @@ const ViewDish = () => {
                                 Description:<h4>{dish.description}</h4>
 
                                 {/* <Button className='bg-primary' style={{marginRight:"10px"}}>Add to cart</Button> */}
-                            <Button className='bg-success' onClick={handlePayment}>Buy Now</Button>
+                            <Button className='bg-success' onClick={handlePayment}>
+                              {loading ? (
+                                <SyncLoader color='#615EFC' loading={loading}  style={{alignItems:"center"}}/>
+                              ):<>Buy Now</>}
+                            </Button>
                             </div>
 
                            

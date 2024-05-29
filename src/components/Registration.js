@@ -3,9 +3,11 @@ import "./Registration.css"
 import { Link,useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import {RingLoader} from 'react-spinners'
 
 const Registration = () => {
 
+    const [loading,setLoading] = useState(false)
     const [formdata,setFormdata] = useState({
         name:'',
         email:'',
@@ -55,6 +57,7 @@ const Registration = () => {
     };
 
     const  onSubmition = (e) =>{
+        setLoading(true)
         e.preventDefault()
 
         if(validateForm()){
@@ -71,6 +74,7 @@ const Registration = () => {
                     
             
         }
+        setLoading(false)
     }
 
 
@@ -99,7 +103,11 @@ const Registration = () => {
                 <br />
                 <input  className='form-control mt-4' type='Password' id='password' placeholder='PASSWORD' value={formdata.password}  onChange={onChange}/> {error.password && <div className='error'>{error.password}</div>}
 
-                <button className='btn btn-success rounded mt-4 w-100'>SIGN UP</button>
+                <button className='btn btn-success rounded mt-4 w-100'>
+                    {loading ? (
+                        <RingLoader color='#D20062' loading={loading} style={{alignItems:"center"}}/>
+                    ):<>Signup</>}
+                </button>
 
                 <p className='mt-4 d-flex justify-content-center' style={{color:"whitesmoke"}}>
                     Already have an account ? <Link to='/login' style={{textDecoration:"none"}}>LOGIN</Link>

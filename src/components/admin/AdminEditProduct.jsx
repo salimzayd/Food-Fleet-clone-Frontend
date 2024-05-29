@@ -4,10 +4,13 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Adminbar from "../Adminbar";
 import { useNavigate } from "react-router-dom";
+import AdminInstance from "../axiosinterceptors/Adminaxiosinterceptor";
+import {BeatLoader} from 'react-spinners'
 
 function AdminEdit (){
     const navigate = useNavigate()
     const {id} = useParams();
+    const [loading,setLoading] = useState(false)
     const [formData,setFormdata] = useState({
         title:"",
         category:"",
@@ -22,14 +25,11 @@ function AdminEdit (){
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
+        setLoading(true)
 
         try{
-            const admintoken = localStorage.getItem('adminToken');
-            console.log(id);
-            const tokenWithBearer = `Bearer ${admintoken}`
-            const response = await axios.put(`http://localhost:5000/api/admin/dishes/${id}`,formData,{
-                headers:{Authorization:tokenWithBearer}
-            })
+            
+            const response = await AdminInstance.put(`/dishes/${id}`,formData)
 
             toast.success("dish updated successfully")
             console.log(response.data);
@@ -39,6 +39,7 @@ function AdminEdit (){
             console.error("Error uploading property",error);
             toast.error(error.message)
         }
+        setLoading(false)
     }
      return(
         <div className="d-flex" >
@@ -113,7 +114,12 @@ function AdminEdit (){
                     <div className="mb-3 row">
 
                     <div className="col-sm-10 offset-sm-2">
-                    <button type="submit" className="btn btn-primary">Save</button>
+                    <button type="submit" className="btn btn-primary" style={{minWidth:'100px'}}>
+                        {loading ? (
+                            <BeatLoader color="#A1DD70" loading={loading} size={5} style={{alignItems:"center"}} />
+
+                        ): <>Save</>}
+                    </button>
                     </div>    
                 
                     </div>

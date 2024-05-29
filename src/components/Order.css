@@ -1,0 +1,78 @@
+/* Order.css */
+/* body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+
+.order-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.order-header h1 {
+    color: #333;
+    font-size: 2rem;
+}
+
+.order-details, .billing-model, .confirmation-text {
+    margin-bottom: 20px;
+}
+
+.order-details p, .billing-model p, .confirmation-text h2 {
+    color: #585656;
+    margin: 10px 0;
+}
+
+.order-details p strong, .billing-model p strong {
+    color: #333;
+}
+
+.billing-model {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.billing-model h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.confirmation-text {
+    text-align: center;
+    padding: 15px;
+    background-color: #dff0d8;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.confirmation-text h2 {
+    color: #3c763d;
+}
+
+@media (max-width: 600px) {
+    .order-container {
+        padding: 10px;
+    }
+
+    .order-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .billing-model, .confirmation-text {
+        padding: 10px;
+    }
+}

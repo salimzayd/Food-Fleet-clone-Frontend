@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { MdDelete } from "react-icons/md";
 import { BiEditAlt } from "react-icons/bi";
 import { useNavigate } from 'react-router-dom'
+import AdminInstance from '../axiosinterceptors/Adminaxiosinterceptor';
 
 const AdminProduct = () => {
 
@@ -14,14 +15,10 @@ const AdminProduct = () => {
 
     const handleDelete = async (_id) =>{
       try{
-        const admintoken = localStorage.getItem('adminToken');
-        const tokenWithBearer = `Bearer ${admintoken}`
         const confirm = window.confirm("do you really want to delete this dish")
         if(confirm){
-          const response = await axios.delete(`http://localhost:5000/api/admin/dishes/${_id}`,{
-          headers:{Authorization:tokenWithBearer,
-          "Content-Type":"multipart/form-data"}          
-        })
+          const response = await AdminInstance.delete(`/dishes/${_id}`,{
+          "Content-Type":"multipart/form-data"})
         if(response.status === 200){
           const updatedDish = dish.filter((item) => item._id !== _id);
           setDish(updatedDish)
@@ -39,12 +36,7 @@ const AdminProduct = () => {
     useEffect(() => {
       const fetchdish = async () =>{
         try{
-          const admintoken = localStorage.getItem('adminToken')
-          const tokenWithBearer = `Bearer ${admintoken}`
-          const response = await axios.get('http://localhost:5000/api/admin/dishes',{
-            headers:{Authorization:tokenWithBearer,
-            "Content-Type":"multipart/form-data"}
-          })
+          const response = await AdminInstance.get('/dishes',)
           setDish(response.data.data)
           console.log(response.data.data);
         }catch(error){

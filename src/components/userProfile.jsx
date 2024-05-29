@@ -1,9 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
-import './UserProfile.css'; // Importing the CSS file
+import './UserProfile.css';
+import {ScaleLoader} from 'react-spinners'
 
 const UserProfile = () => {
+  const [loading,setLoading] = useState(false)
   const [user, setUser] = useState({
     image: '',
     name: '',
@@ -40,6 +42,7 @@ const UserProfile = () => {
   }, []);
 
   const handleUpdate = async (e) => {
+    setLoading(true)
     e.preventDefault();
     try {
       const userToken = localStorage.getItem('token');
@@ -69,6 +72,7 @@ const UserProfile = () => {
     } catch (err) {
       console.error('Error updating profile', err);
     }
+    setLoading(false)
   };
 
 //   const handleDelete = async () => {
@@ -128,7 +132,11 @@ const UserProfile = () => {
         <input type='email' name='email' placeholder='Email' value={user.email} onChange={handleChange} />
         <input type='tel' name='phonenumber' placeholder='Phone Number' value={user.phonenumber} onChange={handleChange} />
         <input type='file' name='image' ref={fileInputRef} style={{ display: "none" }} onChange={handleImageChange} />
-        <button type='submit' className='submit-button'>Update</button>
+        <button type='submit' className='submit-button' >
+          {loading ? (
+            <ScaleLoader color='#6DC5D1' loading={loading} style={{alignItems:"center"}}/>
+          ):<>Update</>}
+        </button>
       </form>
       {/* <button onClick={handleDelete} className='delete-button'>Delete Account</button> */}
     </div>

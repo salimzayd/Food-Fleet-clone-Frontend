@@ -1,9 +1,12 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { toast } from 'react-toastify';
+import AdminInstance from '../axiosinterceptors/Adminaxiosinterceptor';
+import {SyncLoader} from "react-spinners"
 
 const AdminAddProduct = () => {
 
+    const [loading,setLoading] = useState(false)
     const [formData,setFormData] = useState({
         title:"",
         category:"",
@@ -65,20 +68,15 @@ const AdminAddProduct = () => {
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
+        setLoading(true)
         if(validform()){
             try{
-                const adminToken = localStorage.getItem("adminToken")
     
-                if(!adminToken){
-                    toast.error("Admin token not found")
-                    return;
-                }
-                const tokenWithBearer = `Bearer ${adminToken}`
-    
-                const response = await axios.post("http://localhost:5000/api/admin/product",formData,
+                const response = await AdminInstance.post("/product",formData,
             {
-                headers:{Authorization:tokenWithBearer,
-                "Content-Type":"multipart/form-data",}
+                headers:{
+                "Content-Type":"multipart/form-data",
+            },
             });
     
             if(response.status === 201){
@@ -97,6 +95,7 @@ const AdminAddProduct = () => {
             }catch(error){
                 console.error("error",error)
             }
+            setLoading(false)
         }
        
     }
@@ -165,8 +164,12 @@ const AdminAddProduct = () => {
 
                     <div className='mb-3 row'>
                         <div className='col-sm-10 offset-sm-2'>
-                            <button type='submit' className='btn btn-primary'>
-                                Add product
+                            {/* <button type='submit' className='btn btn-primary'>Add product</button> */}
+                            <button type='submit' className='btn btn-primary' style={{minWidth:'100px'}}>
+                                {loading ? (
+                                    <SyncLoader color='#fff' loading={loading} size={5} style={{alignItems:"center"}} />
+                                ) : <>Add product</>
+                                }
                             </button>
                         </div>
                     </div>

@@ -5,6 +5,7 @@ import {Button,Card} from 'react-bootstrap'
 import "./AdminSingleProduct.css"
 import 'aos/dist/aos.css';
 import Aos from 'aos';
+import AdminInstance from '../axiosinterceptors/Adminaxiosinterceptor';
 
 const AdminSingleProduct = () => {
 
@@ -19,11 +20,7 @@ const AdminSingleProduct = () => {
     useEffect(() =>{
         const fetchdish = async () =>{
             try{
-                const admintoken = localStorage.getItem('adminToken');
-                const tokenWithBearer = `Bearer ${admintoken}`
-                const response = await axios.get(`http://localhost:5000/api/admin/dishes/${id}`,{
-                    headers:{Authorization:tokenWithBearer}
-                });
+                const response = await AdminInstance.get(`/dishes/${id}`);
 
                 setDish(response.data.data)
                 console.log(response.data.data,"esrtdyuitrdy");
