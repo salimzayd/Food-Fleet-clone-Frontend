@@ -3,6 +3,7 @@ import { Link,useLocation,useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { toast } from "react-toastify";
 import "./otp.css"
+import userInstance from "../axiosinterceptors/UserAxiosInterceptor";
 
 const OtpVerification = () =>{
     const navigate  = useNavigate()
@@ -23,12 +24,12 @@ const OtpVerification = () =>{
         try {
           // Send OTP
             
-             const otpVerificationResponse = await axios.post("http://localhost:5000/api/users/verifyOtp", { phonenumber, otp });
+             const otpVerificationResponse = await userInstance.post("/verifyOtp", { phonenumber, otp });
       
           if (otpVerificationResponse.data.success) {
             setError(null);
             try {
-              const response = await axios.post("http://localhost:5000/api/users/register", formdata, { headers: { "Content-Type": "application/json" } });
+              const response = await userInstance.post("/register", formdata, { headers: { "Content-Type": "application/json" } });
       
               if (response.data.success) {
 

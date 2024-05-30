@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 import './UserProfile.css';
 import {ScaleLoader} from 'react-spinners'
+import userInstance from './axiosinterceptors/UserAxiosInterceptor';
 
 const UserProfile = () => {
   const [loading,setLoading] = useState(false)
@@ -19,13 +20,9 @@ const UserProfile = () => {
   useEffect(() => {
     const handleGet = async () => {
       try {
-        const userToken = localStorage.getItem('token');
+        
         const userId = localStorage.getItem('_id');
-
-        const tokenWithBearer = `Bearer ${userToken}`;
-        const response = await axios.get(`http://localhost:5000/api/users/user/${userId}`, {
-          headers: { Authorization: tokenWithBearer }
-        });
+        const response = await userInstance.get(`/user/${userId}`);
 
         const userData = response.data?.data || {};
         setUser({
@@ -45,9 +42,8 @@ const UserProfile = () => {
     setLoading(true)
     e.preventDefault();
     try {
-      const userToken = localStorage.getItem('token');
+      
       const userId = localStorage.getItem('_id');
-      const headers = userToken ? { Authorization: `Bearer ${userToken}` } : {};
 
       const formData = new FormData();
       formData.append('name', user.name);
@@ -57,7 +53,7 @@ const UserProfile = () => {
         formData.append('image', image);
       }
 
-      const response = await axios.put(`http://localhost:5000/api/users/profile/${userId}`, formData, { headers });
+      const response = await userInstance.put(`/profile/${userId}`, formData );
 
       const updatedUserData = response.data?.data || {};
       setUser((prevUser) => ({
@@ -75,20 +71,18 @@ const UserProfile = () => {
     setLoading(false)
   };
 
-//   const handleDelete = async () => {
-//     try {
-//       const userToken = localStorage.getItem('token');
-//       const userId = localStorage.getItem('_id');
-//       const headers = userToken ? { Authorization: `Bearer ${userToken}` } : {};
-//       await axios.delete(`http://localhost:5000/api/users/profile/${userId}`, { headers });
+  // const handleDelete = async () => {
+  //   try {
+  //     const userId = localStorage.getItem('_id');
+  //     await userInstance.delete(`/profile/${userId}`);
 
-//       toast('Account deleted successfully');
-//       window.location.href = '/login';
-//       localStorage.removeItem('name')
-//     } catch (err) {
-//       console.error('Error deleting account', err);
-//     }
-//   };
+  //     toast('Account deleted successfully');
+  //     window.location.href = '/login';
+  //     localStorage.removeItem('name')
+  //   } catch (err) {
+  //     console.error('Error deleting account', err);
+  //   }
+  // };
 
   const handleChange = (e) => {
     const { name, value } = e.target;

@@ -3,12 +3,13 @@ import { toast } from 'react-toastify';
 
 
 
-    const admintoken = localStorage.getItem('adminToken');
     const AdminInstance = axios.create({
-        baseURL:"http://localhost:5000/api/admin",
+        baseURL:'http://localhost:5000/api/admin/',
     })
 
     AdminInstance.interceptors.request.use((config) => {
+    const admintoken = localStorage.getItem('adminToken');
+
         console.log(config);
         if(admintoken){
             config.headers.Authorization = `Bearer ${admintoken}`

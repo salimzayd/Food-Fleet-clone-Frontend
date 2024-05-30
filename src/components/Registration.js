@@ -4,6 +4,7 @@ import { Link,useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import {RingLoader} from 'react-spinners'
+import userInstance from './axiosinterceptors/UserAxiosInterceptor'
 
 const Registration = () => {
 
@@ -61,7 +62,7 @@ const Registration = () => {
         e.preventDefault()
 
         if(validateForm()){
-                axios.post("http://localhost:5000/api/users/sendotp",{phonenumber:formdata.phonenumber})
+                userInstance.post("/sendotp",{phonenumber:formdata.phonenumber})
                 .then(result => {
                     console.log(result);
                     toast.success("registration success. redirecting to OTP verification")

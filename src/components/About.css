@@ -1,52 +1,103 @@
-.contents {
-    height: 400px;
-    width: 500px;
-    padding: 0;
-    margin: 150px;
-    margin-bottom: 30px;
-    background-color:whitesmoke;
-    float: right;
-    
-}
-.img1{
-    /* background-color: aqua; */
-    width: 200px;
-    height: 300px;
-    margin: 120px;
-    position: absolute;
-    margin-top: 180px;
-    background-image: url('C:\Users\hp\OneDrive\Desktop\clone project\frontend\foodfleet\src\components\assets\images\delicious-indian-dosa-arrangement.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-}
-.img2{
-    /* background-color: aquamarine; */
-    width: 200px;
-    height: 145px;
-    margin: 335px;
-    position: absolute;
-    margin-top: 180px;
-    background-image: url('C:\Users\hp\OneDrive\Desktop\clone project\frontend\foodfleet\src\components\assets\images\top-view-meals-tasty-yummy-different-pastries-dishes-brown-surface.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.img3{
-    /* background-color: black; */
-    width: 200px;
-    height: 145px;
-    margin: 335px;
-    position: absolute;
-    /* color: wheat; */
-    background-image: url('C:\Users\hp\OneDrive\Desktop\clone project\frontend\foodfleet\src\components\assets\images\vertical-shot-traditional-indian-paneer-butter-masala-cheese-cottage-curry-black-surface (1).jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.contents button{
+.about-section {
+    background: whitesmoke;
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contents {
+    max-width: 500px;
+    padding: 20px;
+    background-color: whitesmoke;
+    text-align: center;
+  }
+  
+  .contents h1 {
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 20px;
+  }
+  
+  .contents p {
+    font-size: 19px;
+    line-height: 1.6;
+  }
+  
+  .contents button {
     color: white;
     border-radius: 10px;
-    margin-left: 200px;
-    border: 0px;
-    margin-top: 60px;
+    border: 0;
+    padding: 10px 20px;
     background-color: #E5B63C;
-}
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .contents button:hover {
+    background-color: #d4a32a;
+  }
+  
+  .img {
+    width: 90%;
+    max-width: 200px;
+    height: auto;
+    margin: 20px auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .img1 {
+    background-image: url('C:/Users/hp/OneDrive/Desktop/clone project/frontend/foodfleet/src/components/assets/images/delicious-indian-dosa-arrangement.jpg');
+  }
+  
+  .img2 {
+    background-image: url('C:/Users/hp/OneDrive/Desktop/clone project/frontend/foodfleet/src/components/assets/images/top-view-meals-tasty-yummy-different-pastries-dishes-brown-surface.jpg');
+  }
+  
+  .img3 {
+    background-image: url('C:/Users/hp/OneDrive/Desktop/clone project/frontend/foodfleet/src/components/assets/images/vertical-shot-traditional-indian-paneer-butter-masala-cheese-cottage-curry-black-surface (1).jpg');
+  }
+  
+  /* Media queries for responsiveness */
+  @media (min-width: 600px) {
+    .about-section {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+  
+    .contents {
+      width: 45%;
+      margin: 20px;
+    }
+  
+    .img {
+      width: 30%;
+      height: 200px;
+      margin: 10px 1.5%;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .contents {
+      width: 40%;
+    }
+  
+    .img {
+      width: 25%;
+      height: 200px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .contents {
+      width: 35%;
+    }
+  
+    .img {
+      width: 20%;
+      height: 200px;
+    }
+  }
+  

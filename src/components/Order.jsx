@@ -1,21 +1,20 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './Order.css'; // Import the CSS file here
+import userInstance from './axiosinterceptors/UserAxiosInterceptor';
 
 function Order() {
     const { id } = useParams();
     const [order, setOrder] = useState(null);
     const [error, setError] = useState(null);
+    const navigate = useNavigate()
 
     useEffect(() => {
         const fetchOrderDetails = async () => {
             try {
-                const userToken = localStorage.getItem('token');
-                const tokenWithBearer = `Bearer ${userToken}`;
-                const response = await axios.get(`http://localhost:5000/api/users/order/${id}`, {
-                    headers: { Authorization: tokenWithBearer }
-                });
+                
+                const response = await userInstance.get(`/order/${id}`, );
                 setOrder(response.data.data);
                 console.log(response.data.data, "Order data fetched successfully.");
             } catch (error) {
@@ -42,14 +41,16 @@ function Order() {
                     <div className='billing-model'>
                         <h2>Billing Information</h2>
                         <p><strong>Total Amount:</strong> ₹ {order.total_amount} -/</p>
-                        <p><strong>Discount 5%:</strong> ₹ {(order.total_amount * 5 / 100).toFixed(2)} -/</p>
-                        <p><strong>Amount To Pay:</strong> ₹ {(order.total_amount - order.total_amount * 5 / 100).toFixed(2)} -/</p>
+                        <p><strong>Discount 5%:</strong> ₹ {order.total_amount * 5 / 100}-/</p>
+                        <p><strong>Amount To Pay:</strong> ₹ {order.total_amount - order.total_amount * 5 / 100} -/</p>
                     </div>
-
                     <div className='confirmation-text'>
                         {/* <h2>Order Confirmed</h2> */}
                         <h2>Your Order is Confirmed. Thank You for Choosing Us!</h2>
                     </div>
+                    
+                        <button className='btn-back' onClick={() => navigate('/dishes')}>Go To Dishes</button>
+                    
                 </>
             )}
         </div>

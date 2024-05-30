@@ -6,6 +6,7 @@ import { CiUnlock } from "react-icons/ci";
 import Adminbar from '../Adminbar';
 import axios from "axios";
 import { toast } from 'react-toastify';
+import AdminInstance from '../axiosinterceptors/Adminaxiosinterceptor';
 
 const AdminUsers = () => {
     const [data, setData] = useState([]);
@@ -18,13 +19,8 @@ const AdminUsers = () => {
                     toast.error("Admin token is not found");
                     return;
                 }
-                const tokenWithBearer = `Bearer ${adminToken}`;
-                const response = await axios.get('http://localhost:5000/api/admin/users', {
-                    headers: {
-                        Authorization: tokenWithBearer,
-                        "Content-Type": "multipart/form-data",
-                    },
-                });
+            
+                const response = await AdminInstance.get('/users',);
 
                 setData(response.data.data);
             } catch (error) {

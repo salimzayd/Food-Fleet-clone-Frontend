@@ -3,11 +3,15 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import "./Search.css"
 import { Button } from 'react-bootstrap';
+import userInstance from './axiosinterceptors/UserAxiosInterceptor';
 
 const Search = () => {
     const location = useLocation();
     const [dishToShow, setDishToShow] = useState(null);
     const [error, setError] = useState(null);
+    const [search,setSearch] = useState('')
+
+    const searcheddish = dishToShow.filter(dishes => dishes.title.toLowerCase().includes(search.toLowerCase()))
 
     useEffect(() => {
         const fetchDish = async () => {
@@ -17,7 +21,7 @@ const Search = () => {
                 const searchParams = new URLSearchParams(location.search);
                 const titlequery = searchParams.get('title');
 
-                const response = await axios.get(`http://localhost:5000/api/users/search?title=${titlequery}`,{headers});
+                const response = await userInstance.get(`/search?title=${titlequery}`,{headers});
                 const data = response.data.data;
 
             
@@ -37,14 +41,14 @@ const Search = () => {
 
     return (
         <div>
-            {dishToShow && (
+            {searcheddish && (
                 <div className='result-box'>
                     <h2 style={{marginRight:"60px"}}>Search Result:</h2>
                     <div className='result-cntnt'>
-                        <p>Title: {dishToShow.title}</p>
-                        <p>Price: {dishToShow.price}</p>
-                        <p>Category: {dishToShow.category}</p>
-                        <img src={dishToShow.image} alt={dishToShow.title} />
+                        <p>Title: {searcheddish.title}</p>
+                        <p>Price: {searcheddish.price}</p>
+                        <p>Category: {searcheddish.category}</p>
+                        <img src={searcheddish.image} alt={searcheddish.title} />
                         <Button style={{marginLeft:"5px"}} className='bg-success'>Buy Now</Button>
                         
                     </div>

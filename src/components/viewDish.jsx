@@ -6,6 +6,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { toast } from 'react-toastify';
 import {SyncLoader} from 'react-spinners'
+import userInstance from './axiosinterceptors/UserAxiosInterceptor';
 
 
 const initialqnty = 1;
@@ -44,7 +45,7 @@ const ViewDish = () => {
                 toast.error("your are not login !!")
                 navigate('/login')
                }
-               const response = await axios.get(`http://localhost:5000/api/users/dishes/${id}`,{
+               const response = await userInstance.get(`/dishes/${id}`,{
                 headers:{Authorization:tokenWithBearer}
                }) 
 
@@ -59,6 +60,8 @@ const ViewDish = () => {
 
     const [count,dispatch] = useReducer(reducer,initialqnty)
     const totalAmount = dish?.price  ?? 0 ;
+    const amountttl = totalAmount * count
+
 
     const handlePayment = async () => {
       setLoading(true)
@@ -73,18 +76,17 @@ const ViewDish = () => {
           }
           const tokenWithBearer = `Bearer ${usertoken}`;
       
-          const orderresponse = await axios.post('http://localhost:5000/api/users/order', {
+          const orderresponse = await userInstance.post('/order', {
             userId: userid,
             productIds: id,
-            amount: totalAmount ,
+            amount: amountttl ,
             currency: "INR"
           }, {
             headers: { Authorization: tokenWithBearer }
           });
       
           const { payment_id, _id: orderId } = orderresponse.data.data;
-          const amountttl = totalAmount * count
-          const response = await axios.post('http://localhost:5000/api/users/payment', {
+          const response = await userInstance.post('/payment', {
             amount: amountttl * 100,
             currency: "INR",
             receipt: `receipt_${Date.now()}`,
