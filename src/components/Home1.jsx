@@ -25,7 +25,7 @@ const Home1 = () => {
   </div>
 <div className='last'>
 <h2 style={{marginLeft:"30px"}}>if you wish to order from  our website !! please <span style={{color:"royalblue"  }}>register</span></h2>
-  <Button className=' btn bg-success' style={{marginLeft:"30px"}}  onClick={() => nav('/register')}>REGISTER</Button>
+  <Button className=' btn-11 bg-success' style={{marginLeft:"30px", width:"150px"}}  onClick={() => nav('/register')}>REGISTER</Button>
   <img src={newbike} style={{height:"250px", width:"250px", marginLeft:"150px"}}></img>
 
 </div>

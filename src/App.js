@@ -12,15 +12,15 @@ import Adminhome from "./components/Adminhome";
 import Adminbar from "./components/Adminbar";
 import AdminUsers from "./components/admin/AdminUsers";
 import AdminLogin from "./components/admin/AdminLogin";
-import AdminAddProduct from "./components/admin/AdminAddProduct";
 import AdminProduct from "./components/admin/AdminProduct";
 import AdminSingleProduct from "./components/admin/AdminSingleProduct";
 import ViewDish from "./components/viewDish";
-import AdminEdit from "./components/admin/AdminEditProduct";
 import Contactus from "./components/Contactus";
 import Search from "./components/Search";
 import UserProfile from "./components/userProfile";
 import Order from "./components/Order";
+import AddProperty from "./components/admin/AddProperty";
+import AdminEdit2 from "./components/admin/EditProperty";
 
 
 
@@ -45,10 +45,11 @@ function App() {
         <Route path="/adminlogin" element={<AdminLogin />} />
         <Route path="/adminhome" element={<Adminhome />} />
         <Route path="/adminusers" element={<AdminUsers />} />
-        <Route path="/addproduct" element={<AdminAddProduct />} />
+        <Route path="/addproduct" element={<AddProperty />} />
         <Route path="/adminproduct" element={<AdminProduct />} />
         <Route path="/adminviewproduct/:id" element={<AdminSingleProduct />} />
-        <Route path="/admineditproduct/:id" element={<AdminEdit />} />
+        {/* <Route path="/admineditproduct/:id" element={<AdminEdit />} /> */}
+        <Route path="/admineditproduct/:id" element={<AdminEdit2 />}/>
         <Route path="/search" element={<Search />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/order/:id" element={<Order />} />

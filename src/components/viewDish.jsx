@@ -127,11 +127,11 @@ const ViewDish = () => {
       
   return (
 <>
-<div style={{height:"680px", backgroundColor:"#040D12"}} >
+<div style={{height:"680px", backgroundColor:"#FCFFE0"}} >
     
         <div className='col-20' style={{ display:"flex", justifyContent:"center", alignItems:"center"}}>
                 {dish &&(
-                    <Card className='' data-aos = "flip-right" style={{marginTop:"15px", backgroundColor:"#282A3A", borderRadius:"25px",boxShadow:"5px 6px 10px red"}} >
+                    <Card className='' data-aos = "flip-right" style={{marginTop:"15px", backgroundColor:"#003C43", borderRadius:"25px",boxShadow:"5px 6px 10px #77B0AA"}} >
                         <Card.Img
                         className='mx-auto'
                         style={{width:"25rem",height:"15rem", borderRadius:"25px"}}
@@ -145,18 +145,18 @@ const ViewDish = () => {
                             <h3 style={{color:"white"}}>{dish.category}</h3>
                             <h3 style={{color:"#8DECB4"}}>quantity:{count}</h3>
                             <div>
-                            <button onClick={() => dispatch('increment')} style={{width:"50px", height:"30px", borderRadius:"10px", color:"black", backgroundColor:"#FFFF80", border:"0px", marginRight:"15px", fontSize:"larger"}}>
-                                 + </button>
-                            <button onClick={() => dispatch('decrement')} style={{width:"50px", height:"30px", borderRadius:"10px", color:"black", backgroundColor:"#C40C0C", border:"0px", fontSize:"larger"}}> - </button>
+                            <button onClick={() => dispatch('increment')} style={{width:"70px", height:"40px", borderRadius:"15px", color:"black", backgroundColor:"#A1DD70", border:"0px", marginRight:"15px", fontSize:"larger", position:"relative"}}>
+                                + </button>
+                            <button onClick={() => dispatch('decrement')} style={{width:"70px", height:"40px", borderRadius:"15px", color:"black", backgroundColor:"#C40C0C", border:"0px", fontSize:"larger"}}> - </button>
                             </div>
                             
-                            <div style={{backgroundColor:"#282A3A", width:"350px", height:"180px", color:"white"}}>
+                            <div style={{backgroundColor:"#003C43", width:"350px", height:"180px", color:"white"}}>
                                 Description:<h4>{dish.description}</h4>
 
                                 {/* <Button className='bg-primary' style={{marginRight:"10px"}}>Add to cart</Button> */}
-                            <Button className='bg-success' onClick={handlePayment}>
+                            <Button className='bg-success' onClick={handlePayment} style={{width:"200px"}}>
                               {loading ? (
-                                <SyncLoader color='#615EFC' loading={loading}  style={{alignItems:"center"}}/>
+                                <SyncLoader color='#68D2E8' loading={loading}  style={{alignItems:"center"}}/>
                               ):<>Buy Now</>}
                             </Button>
                             </div>

@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import {Col,Row,Button,Container} from 'react-bootstrap'
 import axios from 'axios'
 import {toast} from 'react-toastify'
-import AdminInstance from '../axiosinterceptors/Adminaxiosinterceptor'
 import {PulseLoader} from 'react-spinners'
 
 function AdminLogin (){
@@ -24,7 +23,7 @@ const handleSubmit = async (e) =>{
     setLoading(true)
 
     try{
-        const response = await AdminInstance.post("/login",login);
+        const response = await axios.post("http://localhost:5000/api/admin/login",login);
         const {data} = response.data
         console.log("login successfull",data);
 
