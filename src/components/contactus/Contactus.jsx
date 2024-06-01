@@ -7,7 +7,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import '../components/Contactus.css'
+import "./Contactus.css"
 import Aos from 'aos';
 
 

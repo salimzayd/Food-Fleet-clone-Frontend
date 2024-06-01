@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from "yup"
-import AdminInstance from '../axiosinterceptors/Adminaxiosinterceptor';
+import AdminInstance from '../../../axiosinterceptors/Adminaxiosinterceptor';
 import { BarLoader } from 'react-spinners'
 import { toast } from 'react-toastify';
 import './AddProperty.css'

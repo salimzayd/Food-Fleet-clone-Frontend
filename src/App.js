@@ -1,26 +1,27 @@
 import { Routes,Route } from "react-router-dom";
-import About from "./components/About"
-import NAVbar from "./components/navbar";
-import Login from "./components/Login";
-import Registration from "./components/Registration";
-import Home1 from "./components/Home1";
+import About from "./components/aboutus/About"
+import NAVbar from "./components/navbar/navbar";
+import Login from "./pages/login/Login";
+import Registration from "./pages/registration/Registration";
+import Home1 from "./components/Home/Home1";
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
-import OTP from "./components/demo/OTP"
-import Dishes from "./components/Dishes";
-import Adminhome from "./components/Adminhome";
-import Adminbar from "./components/Adminbar";
-import AdminUsers from "./components/admin/AdminUsers";
-import AdminLogin from "./components/admin/AdminLogin";
-import AdminProduct from "./components/admin/AdminProduct";
-import AdminSingleProduct from "./components/admin/AdminSingleProduct";
-import ViewDish from "./components/viewDish";
-import Contactus from "./components/Contactus";
-import Search from "./components/Search";
-import UserProfile from "./components/userProfile";
-import Order from "./components/Order";
-import AddProperty from "./components/admin/AddProperty";
-import AdminEdit2 from "./components/admin/EditProperty";
+import OTP from "./otp/OTP"
+import Dishes from "./pages/dishes/Dishes";
+import Adminhome from "./admin/pages/adminhome/Adminhome";
+import Adminbar from "./admin/components/Adminbar";
+import AdminUsers from "./admin/pages/adminusers/AdminUsers";
+import AdminLogin from "./admin/pages/login/AdminLogin";
+import AdminProduct from "./admin/pages/adminproduct/AdminProduct";
+import AdminSingleProduct from "./admin/pages/singleproduct/AdminSingleProduct";
+import ViewDish from "./pages/viewdish/viewDish";
+import Contactus from "./components/contactus/Contactus";
+import Search from "./pages/search/Search";
+import UserProfile from "./pages/userprofile/userProfile";
+import Order from "./pages/order/Order";
+import AddProperty from "./admin/pages/addproperty/AddProperty";
+import AdminEdit2 from "./admin/pages/editproperty/EditProperty";
+import Footer from "./components/footer/Footer";
 
 
 
@@ -39,7 +40,8 @@ function App() {
          <Route path="/dishes" element={<Dishes />} />
         <Route path="/register" element={<Registration /> } />
         <Route path="/contact" element={<Contactus />} />
-        {/* <Route path="/otpverification" element={<OTP /> } /> */}
+        <Route path="/footer" element={<Footer />} />
+        <Route path="/otpverification" element={<OTP /> } />
         <Route path="/login" element={<Login /> } />
         <Route path="/singledish/:id" element={<ViewDish />} />
         <Route path="/adminlogin" element={<AdminLogin />} />

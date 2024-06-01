@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './Order.css'; // Import the CSS file here
-import userInstance from './axiosinterceptors/UserAxiosInterceptor';
+import userInstance from '../../axiosinterceptors/UserAxiosInterceptor';
 
 function Order() {
     const { id } = useParams();

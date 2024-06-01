@@ -1,11 +1,12 @@
 import React from 'react'
 import "./Home1.css"
 import { Button } from 'react-bootstrap'
-import newbike from "../components/assets/images/newbike.png"
+import newbike from "../assets/images/newbike.png"
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import Contactus from './Contactus'
-import About from './About'
+import Contactus from "../contactus/Contactus"
+import About from "../aboutus/About"
+import Footer from "../footer/Footer"
 
 
 
@@ -32,6 +33,7 @@ const Home1 = () => {
 </div>  
     <About />
     <Contactus />
+    <Footer />
   
     </>
   )

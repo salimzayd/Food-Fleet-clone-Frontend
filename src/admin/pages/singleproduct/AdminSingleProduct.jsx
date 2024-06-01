@@ -5,7 +5,7 @@ import {Button,Card} from 'react-bootstrap'
 import "./AdminSingleProduct.css"
 import 'aos/dist/aos.css';
 import Aos from 'aos';
-import AdminInstance from '../axiosinterceptors/Adminaxiosinterceptor';
+import AdminInstance from '../../../axiosinterceptors/Adminaxiosinterceptor';
 
 const AdminSingleProduct = () => {
 

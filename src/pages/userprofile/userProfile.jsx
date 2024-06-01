@@ -3,7 +3,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 import './UserProfile.css';
 import {ScaleLoader} from 'react-spinners'
-import userInstance from './axiosinterceptors/UserAxiosInterceptor';
+import userInstance from '../../axiosinterceptors/UserAxiosInterceptor';
+
 
 const UserProfile = () => {
   const [loading,setLoading] = useState(false)

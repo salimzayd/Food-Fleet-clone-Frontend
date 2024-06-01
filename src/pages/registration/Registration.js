@@ -4,7 +4,7 @@ import { Link,useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import {RingLoader} from 'react-spinners'
-import userInstance from './axiosinterceptors/UserAxiosInterceptor'
+import userInstance from '../../axiosinterceptors/UserAxiosInterceptor';
 
 const Registration = () => {
 

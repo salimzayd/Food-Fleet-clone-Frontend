@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import AdminInstance from "../axiosinterceptors/Adminaxiosinterceptor";
+import AdminInstance from '../../../axiosinterceptors/Adminaxiosinterceptor';
 import {PulseLoader} from 'react-spinners'
-import AdminBar from "../Adminbar";
+import AdminBar from "../../components/Adminbar";
 import { toast } from "react-toastify";
 import "./EditProperty.css"
 

@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { MdDelete } from "react-icons/md";
 import { BiEditAlt } from "react-icons/bi";
 import { useNavigate } from 'react-router-dom'
-import AdminInstance from '../axiosinterceptors/Adminaxiosinterceptor';
+import AdminInstance from '../../../axiosinterceptors/Adminaxiosinterceptor';
 
 const AdminProduct = () => {
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Card from 'react-bootstrap/Card';
 import {useNavigate} from 'react-router-dom'
-import AdminBar from './Adminbar';
+import AdminBar from '../../components/Adminbar';
 
 
 const Adminhome = () => {

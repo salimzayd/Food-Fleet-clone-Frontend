@@ -6,7 +6,8 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { toast } from 'react-toastify';
 import {SyncLoader} from 'react-spinners'
-import userInstance from './axiosinterceptors/UserAxiosInterceptor';
+import userInstance from '../../axiosinterceptors/UserAxiosInterceptor';
+
 
 
 const initialqnty = 1;

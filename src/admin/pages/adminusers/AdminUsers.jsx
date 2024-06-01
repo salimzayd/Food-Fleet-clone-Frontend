@@ -3,10 +3,10 @@ import { MDBTable, MDBTableBody, MDBTableHead } from 'mdb-react-ui-kit';
 import { FaRegUser } from "react-icons/fa";
 import { CiLock } from "react-icons/ci";
 import { CiUnlock } from "react-icons/ci";
-import Adminbar from '../Adminbar';
+import Adminbar from '../../components/Adminbar';
 import axios from "axios";
 import { toast } from 'react-toastify';
-import AdminInstance from '../axiosinterceptors/Adminaxiosinterceptor';
+import AdminInstance from '../../../axiosinterceptors/Adminaxiosinterceptor';
 
 const AdminUsers = () => {
     const [data, setData] = useState([]);
