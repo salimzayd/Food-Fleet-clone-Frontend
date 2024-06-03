@@ -36,7 +36,7 @@ const AdminBar = () => {
             <NavLink exact to="/adminusers" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="users">Users</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/vieworder" activeClassName="activeClicked">
+            <NavLink exact to="/adminorder" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="store">ViewOrders</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/adminproduct" activeClassName="activeClicked">
@@ -45,7 +45,7 @@ const AdminBar = () => {
             <NavLink exact to="/addproduct" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="plus">Add Dishes</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/adminlogin" activeClassName="activeClicked">
+            <NavLink exact to="/adminhome" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="user">Admin Home</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/" activeClassName="activeClicked">

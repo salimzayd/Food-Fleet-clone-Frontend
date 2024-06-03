@@ -22,6 +22,7 @@ import Order from "./pages/order/Order";
 import AddProperty from "./admin/pages/addproperty/AddProperty";
 import AdminEdit2 from "./admin/pages/editproperty/EditProperty";
 import Footer from "./components/footer/Footer";
+import AdminOrder from "./admin/pages/adminorder/AdminOrder";
 
 
 
@@ -48,6 +49,7 @@ function App() {
         <Route path="/adminhome" element={<Adminhome />} />
         <Route path="/adminusers" element={<AdminUsers />} />
         <Route path="/addproduct" element={<AddProperty />} />
+        <Route path="/adminorder" element={<AdminOrder />} />
         <Route path="/adminproduct" element={<AdminProduct />} />
         <Route path="/adminviewproduct/:id" element={<AdminSingleProduct />} />
         {/* <Route path="/admineditproduct/:id" element={<AdminEdit />} /> */}
