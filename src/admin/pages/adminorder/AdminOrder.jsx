@@ -8,7 +8,6 @@ import { MDBTable, MDBTableBody, MDBTableHead } from 'mdb-react-ui-kit';
 
 const AdminOrder = () => {
     const [data,setData] = useState([]);
-    const names = localStorage.getItem('name')
 
     useEffect(() => {
         const fetchorder = async () =>{
@@ -55,8 +54,8 @@ const AdminOrder = () => {
                                         </div>
                                     </td>
 
-                                    <td>{names}</td>
-                                    <td>{item.products}</td>
+                                    <td>{item.usermodel.name}</td>
+                                    <td>{item.products.title}</td>
                                     <td>{item.total_amount}</td>
                                     <td>{item.date}</td>
                                 </tr>

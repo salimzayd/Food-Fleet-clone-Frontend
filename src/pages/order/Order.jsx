@@ -35,14 +35,14 @@ function Order() {
                         <p><strong>User:</strong> {order.usermodel.name}</p>
                         <p><strong>Dish:</strong> {order.products.title}</p>
                         <p><strong>Date:</strong> {order.date}</p>
-                        <p><strong>Total Amount:</strong> ₹ {order.total_amount} -/</p>
+                        <p><strong>Total Amount:</strong> ₹ {order.total_amount} /-</p>
                     </div>
 
                     <div className='billing-model'>
                         <h2>Billing Information</h2>
-                        <p><strong>Total Amount:</strong> ₹ {order.total_amount} -/</p>
-                        <p><strong>Discount 5%:</strong> ₹ {order.total_amount * 5 / 100}-/</p>
-                        <p><strong>Amount To Pay:</strong> ₹ {order.total_amount - order.total_amount * 5 / 100} -/</p>
+                        <p><strong>Total Amount:</strong> ₹ {order.total_amount} /-</p>
+                        <p><strong>Discount 5%:</strong> ₹ {order.total_amount * 5 / 100} /-</p>
+                        <p><strong>Amount To Pay:</strong> ₹ {order.total_amount - order.total_amount * 5 / 100} /-</p>
                     </div>
                     <div className='confirmation-text'>
                         {/* <h2>Order Confirmed</h2> */}

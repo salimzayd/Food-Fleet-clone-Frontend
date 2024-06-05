@@ -36,4 +36,72 @@
     background-size: cover;
 
   }
+
+  /* @media (max-width:780px){
+    .container{
+      height: 750px;
+    }
+    .content{
+      width: 50%;
+
+    }
+    .last{
+      margin-left: 20px;
+    }
+  }
   
+  @media (max-width:600px){
+    .last{
+      margin-left: 10px;
+      width: 500px;
+      height: 500px;
+    }
+
+    .bike{
+      width: 200px;
+      height: 300px;
+    }
+  }
+
+  @media (max-width:530px){
+    .last{
+      margin: 10px;
+      width: 400px;
+      height: 400px;
+    }
+    .last{
+      margin-left: 100px;
+      width: 300px;
+      height:300px ;
+    }
+    .bike{
+      width: 150px;
+      height: 150px;
+    }
+  /* } */
+
+  @media (max-width:480px){
+    .last{
+      margin-right: 30px;
+      width: 350px;
+      height: 300px;
+    }
+    .bike{
+      height: 150px;
+      width: 150px;
+      margin-bottom:400px;
+    }
+    .container{
+      height: 900px;
+    }
+  }
+  @media (max-width:400px){
+    .container{
+      width: 390px;
+    }
+    .content h2{
+      height: 150px;
+      display: flex;
+      position: relative;
+    }
+  } 

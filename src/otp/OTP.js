@@ -28,21 +28,17 @@ const OtpVerification = () =>{
       
           if (otpVerificationResponse.data.success) {
             setError(null);
-            try {
+
               const response = await userInstance.post("/register", formdata, { headers: { "Content-Type": "application/json" } });
-      
               if (response.data.success) {
-
-
                 navigate("/login");
-
               } else {
                 setError(response.data.message);
               }
-            } catch (error) {
+            
               console.error("Error:", error.message);
               setError("An error occurred during registration. Please try again later.");
-            }
+            
           } else {
             setError("Invalid OTP. Please try again.");
           }

@@ -1,4 +1,5 @@
-import { Routes,Route } from "react-router-dom";
+import { Routes,Route} from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import About from "./components/aboutus/About"
 import NAVbar from "./components/navbar/navbar";
 import Login from "./pages/login/Login";
@@ -27,13 +28,13 @@ import AdminOrder from "./admin/pages/adminorder/AdminOrder";
 
 
 function App() {
+  const location = useLocation()
+  const isPath = location.pathname.startsWith("/admin")
   return (
     <div className="App">
       <ToastContainer />
       
-      <NAVbar />
-
-    {/* <Home1 /> */}
+      {isPath ? null : <NAVbar />}
 
        <Routes>
          <Route path="/" element={<Home1 /> } />
@@ -52,7 +53,6 @@ function App() {
         <Route path="/adminorder" element={<AdminOrder />} />
         <Route path="/adminproduct" element={<AdminProduct />} />
         <Route path="/adminviewproduct/:id" element={<AdminSingleProduct />} />
-        {/* <Route path="/admineditproduct/:id" element={<AdminEdit />} /> */}
         <Route path="/admineditproduct/:id" element={<AdminEdit2 />}/>
         <Route path="/search" element={<Search />} />
         <Route path="/profile" element={<UserProfile />} />

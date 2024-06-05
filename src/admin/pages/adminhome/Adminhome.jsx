@@ -1,89 +1,98 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import AdminInstance from '../../../axiosinterceptors/Adminaxiosinterceptor';
 import AdminBar from '../../components/Adminbar';
 import { toast } from 'react-toastify';
-import "./Adminhome.css"
-
-
+import "./Adminhome.css";
 
 const Adminhome = () => {
-    const [data,setData] = useState('')
-    const [count,setCount] = useState(0)
-   
-    const navigate  = useNavigate()
+    const [data, setData] = useState('');
+    const [count, setCount] = useState(0);
+    const [ordercount,setOrdercount] = useState(0)
+
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchcount = async() =>{
+        const fetchcount = async () => {
+            try {
+                const adminToken = localStorage.getItem('adminToken');
+                if (!adminToken) {
+                    toast.error("Admin token is not found");   
+                    return;
+                }
+                const response = await AdminInstance.get('/users');
+                setCount(response.data.datacount);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        fetchcount();
+    }, []);
+
+    useEffect(() => {
+        const ordercount = async () =>{
             try{
                 const adminToken = localStorage.getItem('adminToken');
                 if (!adminToken) {
-                    toast.error("Admin token is not found");
+                    toast.error("Admin token is not found");   
                     return;
+                }
+                const response = await AdminInstance.get('/order');
+                setOrdercount(response.data.allordercount)
+            }catch(error){
+                console.error(error);
             }
-            const response = await AdminInstance.get('/users')
-            setCount(response.data.datacount)
-        }catch(error){
-            console.error(error);
         }
-    }
-    fetchcount()
+        ordercount()
     },[])
 
-  return (
-    <div className=' adhome d-flex w-100'>
-        <div>
+    return (
+        <div className='adhome d-flex w-100'>
             <AdminBar />
+            <div className='d-flex mt-5'>
+                <div>
+                    <Card
+                        style={{ width: '20rem' }}
+                        className='adcard mb-2 m-2'
+                        onClick={() => navigate("/adminusers")}>
+                        <Card.Header className='cdhead'>Users</Card.Header>
+                        <Card.Body>
+                            <Card.Title>Users</Card.Title>
+                            <Card.Text>
+                                <h1>{count}</h1>
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </div>
+                <div>
+                    <Card style={{ width: "18rem" }}
+                        className='adcard mb-2 m-2'
+                        onClick={() => navigate("/adminorder")}>
+                        <Card.Header className='cdhead'>Orders</Card.Header>
+                        <Card.Body>
+                            <Card.Title>ORDERS</Card.Title>
+                            <Card.Text>
+                                <h1>{ordercount}</h1>
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </div>
+                <div>
+                    <Card style={{ width: "18rem" }}
+                        className='adcard mb-2 m-2'>
+                        <Card.Header className='cdhead'>Delivered</Card.Header>
+                        <Card.Body>
+                            <Card.Title>Delivery</Card.Title>
+                            <Card.Text>
+                                <h1>{5}</h1>
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </div>
+            </div>
         </div>
+    );
+};
 
-        <div className='d-flex mt-5'>
-            <div>
-                <Card 
-                style={{width:'20rem'}}
-                className='adcard mb-2 m-2 '
-                onClick={() => navigate("/adminusers")}>
-                    <Card.Header className='cdhead'>Users</Card.Header>
-                    <Card.Body>
-                        <Card.Title>Users</Card.Title>
-                        <Card.Text>
-                            <h1>{setCount}</h1>
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-            </div>
-
-            <div>
-                <Card style={{width:"18rem"}}
-                className=' adcard mb-2 m-2'
-                onClick={() => navigate("/adminorder")}>
-                    <Card.Header className='cdhead'>Orders</Card.Header>
-                    <Card.Body>
-                        <Card.Title>ORDERS</Card.Title>
-                        <Card.Text>
-                            <h1></h1>
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-            </div>
-
-
-            <div>
-                <Card style={{width:"18rem"}}
-                className='adcard mb-2 m-2'>
-                    <Card.Header className='cdhead'>Delivered</Card.Header>
-                    <Card.Body>
-                        <Card.Title>Delivery</Card.Title>
-                        <Card.Text>
-                            <h1>{5}</h1>
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-            </div>
-
-        </div>
-    </div>
-  )
-}
-
-export default Adminhome
+export default Adminhome;
