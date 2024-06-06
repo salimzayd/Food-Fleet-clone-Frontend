@@ -1,13 +1,68 @@
-.main-container{
+/* Admin Single Product Styles */
+.main-container {
     width: 100%;
-    height:730px;
-    background-image: url('C:\Users\hp\OneDrive\Desktop\clone project\frontend\foodfleet\src\components\assets\product_img\white-concrete-wall.jpg');
-    filter: blur(1.5px); 
+    height: 730px;
+    background-image: url('C:/Users/hp/OneDrive/Desktop/clone project/frontend/foodfleet/src/components/assets/product_img/white-concrete-wall.jpg');
+    filter: blur(1.5px);
     background-size: cover;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: -1; 
+    z-index: -1;
+}
+
+/* Container for the product card */
+.product-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+}
+
+/* Product card styles */
+.product-card {
+    margin-top: 25px;
+    background-color: transparent;
+    box-shadow: 10px 10px 9px black;
+    transition: all 0.3s ease-in-out;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 100%;
+}
+
+/* Product card image */
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px 15px 0 0;
+}
+
+/* Product card body */
+.product-card .text-center {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .main-container {
+        height: auto;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .product-card-container {
+        padding: 10px;
+    }
+
+    .product-card {
+        width: 100%;
+        height: auto;
+    }
 }

@@ -9,7 +9,7 @@ import "./Adminhome.css";
 const Adminhome = () => {
     const [data, setData] = useState('');
     const [count, setCount] = useState(0);
-    const [ordercount,setOrdercount] = useState(0)
+    const [ordercount, setOrdercount] = useState(0);
 
     const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ const Adminhome = () => {
             try {
                 const adminToken = localStorage.getItem('adminToken');
                 if (!adminToken) {
-                    toast.error("Admin token is not found");   
+                    toast.error("Admin token is not found");
                     return;
                 }
                 const response = await AdminInstance.get('/users');
@@ -31,26 +31,26 @@ const Adminhome = () => {
     }, []);
 
     useEffect(() => {
-        const ordercount = async () =>{
-            try{
+        const ordercount = async () => {
+            try {
                 const adminToken = localStorage.getItem('adminToken');
                 if (!adminToken) {
-                    toast.error("Admin token is not found");   
+                    toast.error("Admin token is not found");
                     return;
                 }
                 const response = await AdminInstance.get('/order');
-                setOrdercount(response.data.allordercount)
-            }catch(error){
+                setOrdercount(response.data.allordercount);
+            } catch (error) {
                 console.error(error);
             }
-        }
-        ordercount()
-    },[])
+        };
+        ordercount();
+    }, []);
 
     return (
         <div className='adhome d-flex w-100'>
             <AdminBar />
-            <div className='d-flex mt-5'>
+            <div className='d-flex mt-5 flex-wrap justify-content-center'>
                 <div>
                     <Card
                         style={{ width: '20rem' }}

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { MDBTable, MDBTableBody, MDBTableHead } from 'mdb-react-ui-kit';
 import { FaRegUser } from "react-icons/fa";
-import { CiLock } from "react-icons/ci";
-import { CiUnlock } from "react-icons/ci";
+import { CiLock, CiUnlock } from "react-icons/ci";
 import Adminbar from '../../components/Adminbar';
 import axios from "axios";
 import { toast } from 'react-toastify';
 import AdminInstance from '../../../axiosinterceptors/Adminaxiosinterceptor';
+import './Adminusers.css'; // Ensure this file contains the updated CSS
 
 const AdminUsers = () => {
     const [data, setData] = useState([]);
@@ -20,7 +20,7 @@ const AdminUsers = () => {
                     return;
                 }
             
-                const response = await AdminInstance.get('/users',);
+                const response = await AdminInstance.get('/users');
 
                 setData(response.data.data);
             } catch (error) {
@@ -32,7 +32,6 @@ const AdminUsers = () => {
     }, []);
 
     const handlelock = async (id, isBlocked) => {
-        console.log(`handleLock called with id: ${id} and isBlocked: ${isBlocked}`);
         try {
             const action = isBlocked ? "unblock" : "block";
             const admintoken = localStorage.getItem('adminToken');
@@ -44,8 +43,6 @@ const AdminUsers = () => {
             
             const tokenWithBearer = `Bearer ${admintoken}`;
             const url = `http://localhost:5000/api/admin/users/block/${id}?action=${action}`;
-            
-            console.log(`Sending request to: ${url}`);
 
             const response = await axios.patch(url, {}, {
                 headers: { Authorization: tokenWithBearer }
@@ -57,10 +54,8 @@ const AdminUsers = () => {
                 )
             );
 
-            console.log(response.data.message);
             toast.success(response.data.message);
         } catch (err) {
-            console.error('Error in handleLock:', err);
             toast.error('Error in handleLock');
         }
     };

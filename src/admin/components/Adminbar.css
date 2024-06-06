@@ -1,0 +1,28 @@
+/* AdminBar Styles */
+.admin-bar {
+    display: flex;
+    height: 100vh;
+    overflow: scroll initial;
+  }
+  
+  @media (max-width: 768px) {
+    .admin-bar {
+      width: 60px;
+    }
+  
+    .admin-bar .cdb-sidebar {
+      width: 60px;
+    }
+  
+    .admin-bar .cdb-sidebar-header,
+    .admin-bar .cdb-sidebar-footer,
+    .admin-bar .cdb-sidebar-menu-item {
+      display: flex;
+      justify-content: center;
+    }
+  
+    .admin-bar .cdb-sidebar-menu-item span {
+      display: none;
+    }
+  }
+  

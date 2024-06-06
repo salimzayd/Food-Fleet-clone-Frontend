@@ -55,7 +55,7 @@ const AdminOrder = () => {
                                     </td>
 
                                     <td>{item.usermodel.name}</td>
-                                    <td>{item.products.title}</td>
+                                    <td>{item.products}</td>
                                     <td>{item.total_amount}</td>
                                     <td>{item.date}</td>
                                 </tr>

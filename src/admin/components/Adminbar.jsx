@@ -8,18 +8,18 @@ import {
   CDBSidebarMenuItem,
 } from "cdbreact";
 import { NavLink } from "react-router-dom";
-import {toast} from 'react-toastify'
+import { toast } from 'react-toastify';
+import './Adminbar.css'; // Import the CSS file
+
 const AdminBar = () => {
   
-  const handlelogout = ()=>{
+  const handlelogout = () => {
     localStorage.removeItem('adminToken');
-    toast.success("admin removed successfully")
-  }
+    toast.success("Admin removed successfully");
+  };
 
   return (
-    <div
-      style={{ display: "flex", height: "100vh", overflow: "scroll initial" }}
-    >
+    <div className="admin-bar">
       <CDBSidebar textColor="#fff" backgroundColor="#2C3539">
         <CDBSidebarHeader>
           <NavLink
@@ -37,7 +37,7 @@ const AdminBar = () => {
               <CDBSidebarMenuItem icon="users">Users</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/adminorder" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="store">ViewOrders</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem icon="store">View Orders</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/adminproduct" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="list">Admin Products</CDBSidebarMenuItem>
@@ -51,14 +51,15 @@ const AdminBar = () => {
             <NavLink exact to="/" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="home">Home</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/adminlogin" activeClassName="activeClicked" onClick={handlelogout} style={{color:"red"}}>
-              <CDBSidebarMenuItem icon="door">logout</CDBSidebarMenuItem>
+            <NavLink exact to="/adminlogin" activeClassName="activeClicked" onClick={handlelogout} style={{ color: "red" }}>
+              <CDBSidebarMenuItem icon="door">Logout</CDBSidebarMenuItem>
             </NavLink>
-            
           </CDBSidebarMenu>
         </CDBSidebarContent>
 
-        <CDBSidebarFooter style={{ textAlign: "center" }}></CDBSidebarFooter>
+        <CDBSidebarFooter style={{ textAlign: "center" }}>
+          {/* Footer content if needed */}
+        </CDBSidebarFooter>
       </CDBSidebar>
     </div>
   );

@@ -1,16 +1,78 @@
-.container2{
-    background-image: url('C:\Users\hp\OneDrive\Desktop\clone project\frontend\foodfleet\src\components\assets\images\fresh-pasta-with-hearty-bolognese-parmesan-cheese-generated-by-ai.jpg');
+.container2 {
+    background-image: url('C:/Users/hp/OneDrive/Desktop/clone project/frontend/foodfleet/src/components/assets/images/fresh-pasta-with-hearty-bolognese-parmesan-cheese-generated-by-ai.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-}
-.qoute{
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* width: 100%; */
+    box-sizing: border-box;
+  }
+  
+  .qoute {
     color: rgb(241, 243, 242);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding-right: 300px;
-}
-.one{
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .qoute h2 {
+    font-size: 1.5em;
+  }
+  
+  .one {
     color: red;
-}
-.two{
+  }
+  
+  .two {
     color: rgb(38, 207, 38);
-}
+  }
+  
+   .shadow {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px; 
+    box-sizing: border-box;
+   } 
+  
+  button {
+    width: 100%;
+  }
+  
+  @media (max-width: 768px) {
+    .qoute {
+      padding-right: 0;
+    }
+  
+    .qoute h2 {
+      font-size: 1.2em;
+    }
+  
+    .shadow {
+      padding: 15px;
+    }
+  
+    button {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .qoute h2 {
+      font-size: 1em;
+    }
+  
+    .shadow {
+      padding: 10px;
+    }
+  
+    button {
+      width: 100%;
+    }
+  }
+  

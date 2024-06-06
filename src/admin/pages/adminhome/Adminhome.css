@@ -1,18 +1,62 @@
-.adhome{
+.adhome {
     background-color: #D1D8C5;
+    padding: 20px;
 }
-.adcard{
+
+.adcard {
     border-radius: 15px;
     cursor: pointer;
     transition: transform 0.3s ease;
-
 }
-.adcard:hover{
+
+.adcard:hover {
     transform: translateY(-10px);
     box-shadow: 0px 5px 3px #686D76;
-
-
 }
-.cdhead{
+
+.cdhead {
     background-color: #EEEEEE;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 992px) {
+    .adhome .d-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .adcard {
+        width: 100px;
+        max-width: 300px;
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .adhome {
+        padding: 10px;
+    }
+
+    .adcard {
+        width: 100%;
+        max-width: 280px;
+        margin: 8px 0;
+    }
+
+    .cdhead {
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .adcard {
+        width: 100%;
+        max-width: 130px;
+        margin: 100px 0;
+        margin-bottom: 50px;
+    }
+
+    .cdhead {
+        font-size: 1.2em;
+    }
 }

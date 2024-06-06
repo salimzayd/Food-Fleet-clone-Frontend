@@ -1,8 +1,7 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import {Button,Card} from 'react-bootstrap'
-import "./AdminSingleProduct.css"
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { Button, Card } from 'react-bootstrap';
+import "./AdminSingleProduct.css";
 import 'aos/dist/aos.css';
 import Aos from 'aos';
 import AdminInstance from '../../../axiosinterceptors/Adminaxiosinterceptor';
@@ -11,61 +10,50 @@ const AdminSingleProduct = () => {
 
     useEffect(() =>{
         Aos.init()
-    })
+    }, [])
 
-    const { id } = useParams()
-    const [dish,setDish] = useState([]);
+    const { id } = useParams();
+    const [dish, setDish] = useState([]);
 
-
-    useEffect(() =>{
-        const fetchdish = async () =>{
-            try{
+    useEffect(() => {
+        const fetchdish = async () => {
+            try {
                 const response = await AdminInstance.get(`/dishes/${id}`);
-
-                setDish(response.data.data)
-                console.log(response.data.data,"esrtdyuitrdy");
-            }catch(err){
-                console.log("error fetching dish",err);
+                setDish(response.data.data);
+            } catch (err) {
+                console.log("error fetching dish", err);
             }
         };
 
-        if(id){
+        if (id) {
             fetchdish();
         }
-    },[id])
-    console.log(dish,"fghjk");
-  return (
-    <>
+    }, [id]);
+
+    return (
+        <>
             <div className='main-container'></div>
-            <div style={{ display:"flex", justifyContent:"center", alignItems:"center", width:"450px", marginLeft:"550px"}}>
-                {dish &&(
-                    <Card style={{marginTop:"25px", backgroundColor:"transparent", boxShadow:"10px 10px 9px black" ,height:"39rem"}}  data-aos="fade-down"
-                    data-aos-easing="linear"
-                    data-aos-duration="1500">
+            <div className='product-card-container'>
+                {dish && (
+                    <Card className='product-card' data-aos="fade-down"
+                        data-aos-easing="linear"
+                        data-aos-duration="1500">
                         <Card.Img
-                        className='mx-auto'
-                        style={{width:"28rem",height:"17rem", borderRadius:"25px"}}
-                        variant='top'
-                        src={dish.image} />
+                            className='mx-auto'
+                            variant='top'
+                            src={dish.image} />
 
                         <Card.Body className='text-center'>
-
-                            <Card.Title style={{color:"black"}}>{dish.title}</Card.Title>
-                            <h3 style={{color:"gold"}}>₹{dish.price} -/</h3>
-                            <h3 style={{color:"black"}}>{dish.category}</h3>
-                            Description:<h2 style={{color:"black"}}>{dish.description}</h2>
-
+                            <Card.Title>{dish.title}</Card.Title>
+                            <h3 style={{ color: "gold" }}>₹{dish.price} -/</h3>
+                            <h3>{dish.category}</h3>
+                            <div>Description:<h2>{dish.description}</h2></div>
                         </Card.Body>
                     </Card>
-
                 )}
-            
             </div>
-        </>    
-        
-        
-      
-  )
+        </>
+    );
 }
 
-export default AdminSingleProduct
+export default AdminSingleProduct;

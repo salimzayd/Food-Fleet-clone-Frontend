@@ -4,6 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { MdAdminPanelSettings } from "react-icons/md";
 import AOS from 'aos';
+import "./Navbar.css"
 import 'aos/dist/aos.css';
 
 const NAVbar = () => {
@@ -35,18 +36,20 @@ const NAVbar = () => {
             <NavDropdown
               title={name ? <>{name}</> : <>Login</>}
               id='responsive-nav'
+              
+              
               >
                 {!name && (
-                  <NavDropdown.Item onClick={() => navigate('/login')}>
+                  <NavDropdown.Item onClick={() => navigate('/login')}  menuClassName='dropdown-menu-top'>
                   Login
                 </NavDropdown.Item>
                 )}
                 {name && (
-                  <NavDropdown.Item onClick={handleLogout}>
+                  <NavDropdown.Item onClick={handleLogout}  menuClassName='dropdown-menu-top'>
                   Logout
                 </NavDropdown.Item>
                 )}
-                <NavDropdown.Item onClick={() => navigate(`/profile`)}>
+                <NavDropdown.Item onClick={() => navigate(`/profile`)} menuClassName='dropdown-menu-top'>
                   user Profile
                 </NavDropdown.Item>
               </NavDropdown>
