@@ -10,32 +10,31 @@ const OtpVerification = () =>{
     const location = useLocation()
     const [otp,setOtp] = useState('')
     const [error,setError] = useState('')
-    const formdata = location.state.formdata
-    const phonenumber = location.state.phonenumber
-    console.log(phonenumber);
+    // console.log(phonenumber);
 
 
     
       const handleVerify = async (e) => {
         e.preventDefault();
-      
+          const {formdata,phonenumber} = location.state
         try {
           // Send OTP
             
-             const otpVerificationResponse = await axios.post("http://localhost:5000/api/users/verifyOtp", { phonenumber, otp });
+             const otpVerificationResponse = await userInstance.post("/verifyOtp", { phonenumber, otp });
              console.log("otp response: ",otpVerificationResponse)
 
       
           if (otpVerificationResponse.data.success) {
             setError(null);
 
-              const response = await axios.post("http://localhost:5000/api/users/register", formdata, { headers: { "Content-Type": "application/json" } });
-              console.log(" reg response: ",response)
-              if (response.data.status === "success") {
+              const regresponse = await userInstance.post("/register", formdata);
+              console.log(" reg response: ",regresponse)
+              console.log("status: ",regresponse.data.status);
+              if (regresponse.data.status === "success") {
                 navigate("/login");
               } else {
-                setError(response.data.message)
-                toast.error(response.data.message || "registration failed. try again later")
+                setError(regresponse.data.message)
+                toast.error(regresponse.data.message || "registration failed. try again later")
               }
              // console.error("Error:", error.message);
              // setError("An error occurred during registration. Please try again later.");
@@ -47,6 +46,7 @@ const OtpVerification = () =>{
        } catch (error) {
           console.error("Error:", error.message);
           setError("An error occurred. Please try again later.");
+          // setError(error.otpVerificationResponse.data.message);
         }
       }
     

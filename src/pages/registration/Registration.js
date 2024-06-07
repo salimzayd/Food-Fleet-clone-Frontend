@@ -14,7 +14,6 @@ const Registration = () => {
         email:'',
         phonenumber:'',
         password:'',
-        image:''
     })
     const [error,setError] = useState({})
     const navi = useNavigate();
