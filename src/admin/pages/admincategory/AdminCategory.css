@@ -1,0 +1,140 @@
+.admin-category {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #f9f9f9;
+    padding: 20px;
+    min-height: 80vh; 
+}
+
+/* .admin-bar {
+    margin: 0;
+    min-width: 200px;
+} */
+
+.admin-category-content {
+    flex-grow: 1;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 20px; /* Space between the sidebar and content */
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.add-category {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.add-category input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+}
+
+.add-category button {
+    padding: 10px 20px;
+    width: 200px;
+    background: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.add-category button:hover {
+    background: #218838;
+}
+
+.category-list {
+    list-style: none;
+    padding: 0;
+}
+
+.category-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.category-item:last-child {
+    border-bottom: none;
+}
+
+.category-item span {
+    flex: 1;
+    color: #555;
+}
+
+.edit-button, .save-button, .cancel-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    width: 250px;
+    height: 35px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.delete-button{
+    width: 250px;
+    height: 35px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.edit-button {
+    background: #007bff;
+    color: #fff;
+}
+
+.edit-button:hover {
+    background: #0056b3;
+}
+
+.delete-button {
+    background: #dc3545;
+    color: #fff;
+}
+
+.delete-button:hover {
+    background: #c82333;
+}
+
+.save-button {
+    background: #28a745;
+    color: #fff;
+}
+
+.save-button:hover {
+    background: #218838;
+}
+
+.cancel-button {
+    background: #6c757d;
+    color: #fff;
+}
+
+.cancel-button:hover {
+    background: #5a6268;
+}
+
+input[type="text"] {
+    width: 60%;
+    padding: 5px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}

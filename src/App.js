@@ -24,6 +24,7 @@ import AddProperty from "./admin/pages/addproperty/AddProperty";
 import AdminEdit2 from "./admin/pages/editproperty/EditProperty";
 import Footer from "./components/footer/Footer";
 import AdminOrder from "./admin/pages/adminorder/AdminOrder";
+import AdminCategory from "./admin/pages/admincategory/AdminCategory";
 
 
 
@@ -57,6 +58,7 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/order/:id" element={<Order />} />
+        <Route path="/category" element={<AdminCategory />} />
         
       </Routes> 
     

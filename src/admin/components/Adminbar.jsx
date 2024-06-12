@@ -51,8 +51,11 @@ const AdminBar = () => {
             <NavLink exact to="/" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="home">Home</CDBSidebarMenuItem>
             </NavLink>
+            <NavLink exact to="/category" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="room">Category</CDBSidebarMenuItem>
+            </NavLink>
             <NavLink exact to="/adminlogin" activeClassName="activeClicked" onClick={handlelogout} style={{ color: "red" }}>
-              <CDBSidebarMenuItem icon="door">Logout</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem icon="bin">Logout</CDBSidebarMenuItem>
             </NavLink>
           </CDBSidebarMenu>
         </CDBSidebarContent>

@@ -75,7 +75,7 @@ const Contactus = () => {
     <div className='main-cn'>
             {contactdetails.map((item) =>(
             <>
-            <div className='cardsee'>
+            <div className='cardsee' data-aos="zoom-inaaaaaaaaaa">
               
               <p style={{display:"flex", justifyContent:"center", color:"skyblue"}}>{item.icon}</p> 
             

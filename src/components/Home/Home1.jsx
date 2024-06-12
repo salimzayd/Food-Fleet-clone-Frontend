@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import './Home1.css';
 import { Button } from 'react-bootstrap';
 import newbike from '../assets/images/newbike.png';
@@ -6,8 +6,15 @@ import { useNavigate } from 'react-router-dom';
 import Contactus from '../contactus/Contactus';
 import About from '../aboutus/About';
 import Footer from '../footer/Footer';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+
+
 
 const Home1 = () => {
+  useEffect(()=>{
+    Aos.init()
+  })
   const nav = useNavigate();
   
   return (
@@ -22,7 +29,7 @@ const Home1 = () => {
             Satisfaction guaranteed, every bite, every time."
           </h3>
         </div>
-        <div className="last">
+        <div className="last" data-aos="flip-down"> 
           <h2>if you wish to order from our website !! please <span className="register">register</span></h2>
           <Button className="btn-11 bg-success" onClick={() => nav('/register')}>REGISTER</Button>
           <img src={newbike} className="bike" alt="New Bike" />
