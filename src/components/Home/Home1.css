@@ -6,7 +6,7 @@
 }
 
 .blur-background {
-  background-image: url('C:/Users/hp/OneDrive/Desktop/clone project/frontend/foodfleet/src/components/assets/images/fresh-gourmet-meal-beef-taco-salad-plate-generated-by-ai.jpg');
+  background-image: url('../assets/images/freshaii.jpg');
   filter: blur(2px);
   background-size: cover;
   position: absolute;

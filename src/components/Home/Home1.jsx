@@ -1,7 +1,7 @@
 import React,{useEffect} from 'react';
 import './Home1.css';
 import { Button } from 'react-bootstrap';
-// import newbike from '../assets/images/newbike.png';
+import newbike from '../assets/images/bikee.png';
 import { useNavigate } from 'react-router-dom';
 import Contactus from '../contactus/Contactus';
 import About from '../aboutus/About';
@@ -32,7 +32,7 @@ const Home1 = () => {
         <div className="last" data-aos="flip-down"> 
           <h2>if you wish to order from our website !! please <span className="register">register</span></h2>
           <Button className="btn-11 bg-success" onClick={() => nav('/register')}>REGISTER</Button>
-          {/* <img src={newbike} className="bike" alt="New Bike" /> */}
+          <img src={newbike} className="bike" alt="New Bike" />
         </div>
       </div>  
       <About />
