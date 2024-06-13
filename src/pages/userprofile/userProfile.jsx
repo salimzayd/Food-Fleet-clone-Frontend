@@ -23,7 +23,7 @@ const UserProfile = () => {
       try {
         
         const userId = localStorage.getItem('_id');
-        const response = await userInstance.get(`/user/${userId}`);
+        const response = await userInstance.get(`/api/users/user/${userId}`);
 
         const userData = response.data?.data || {};
         setUser({
@@ -54,7 +54,7 @@ const UserProfile = () => {
         formData.append('image', image);
       }
 
-      const response = await userInstance.put(`/profile/${userId}`, formData );
+      const response = await userInstance.put(`/api/users/profile/${userId}`, formData );
 
       const updatedUserData = response.data?.data || {};
       setUser((prevUser) => ({

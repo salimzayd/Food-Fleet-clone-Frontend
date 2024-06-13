@@ -18,7 +18,7 @@ const AdminSingleProduct = () => {
     useEffect(() => {
         const fetchdish = async () => {
             try {
-                const response = await AdminInstance.get(`/dishes/${id}`);
+                const response = await AdminInstance.get(`/api/admin/dishes/${id}`);
                 setDish(response.data.data);
             } catch (err) {
                 console.log("error fetching dish", err);

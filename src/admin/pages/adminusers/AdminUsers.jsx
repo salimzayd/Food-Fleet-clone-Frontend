@@ -20,7 +20,7 @@ const AdminUsers = () => {
                     return;
                 }
             
-                const response = await AdminInstance.get('/users');
+                const response = await AdminInstance.get('/api/admin/users');
 
                 setData(response.data.data);
             } catch (error) {

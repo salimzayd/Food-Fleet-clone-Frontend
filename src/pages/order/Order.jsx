@@ -14,7 +14,7 @@ function Order() {
         const fetchOrderDetails = async () => {
             try {
                 
-                const response = await userInstance.get(`/order/${id}`, );
+                const response = await userInstance.get(`/api/users/order/${id}`, );
                 setOrder(response.data.data);
                 console.log(response.data.data, "Order data fetched successfully.");
             } catch (error) {

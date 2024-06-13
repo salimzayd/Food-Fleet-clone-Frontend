@@ -17,7 +17,7 @@ const AdminProduct = () => {
       try{
         const confirm = window.confirm("do you really want to delete this dish")
         if(confirm){
-          const response = await AdminInstance.delete(`/dishes/${_id}`,{
+          const response = await AdminInstance.delete(`/api/admin/dishes/${_id}`,{
           "Content-Type":"multipart/form-data"})
         if(response.status === 200){
           const updatedDish = dish.filter((item) => item._id !== _id);
@@ -36,7 +36,7 @@ const AdminProduct = () => {
     useEffect(() => {
       const fetchdish = async () =>{
         try{
-          const response = await AdminInstance.get('/dishes',)
+          const response = await AdminInstance.get('/api/admin/dishes',)
           setDish(response.data.data)
           console.log(response.data.data);
         }catch(error){

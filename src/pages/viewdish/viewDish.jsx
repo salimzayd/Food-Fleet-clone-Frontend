@@ -49,7 +49,7 @@ const ViewDish = () => {
                     toast.error("You are not logged in!");
                     navigate('/login');
                 }
-                const response = await userInstance.get(`/dishes/${id}`, {
+                const response = await userInstance.get(`/api/users/dishes/${id}`, {
                     headers: { Authorization: tokenWithBearer }
                 });
 
@@ -79,7 +79,7 @@ const ViewDish = () => {
             }
             const tokenWithBearer = `Bearer ${usertoken}`;
 
-            const orderresponse = await userInstance.post('/order', {
+            const orderresponse = await userInstance.post('/api/users/order', {
                 userId: userid,
                 productIds: id,
                 amount: amountttl,
@@ -89,7 +89,7 @@ const ViewDish = () => {
             });
 
             const { payment_id, _id: orderId } = orderresponse.data.data;
-            const response = await userInstance.post('/payment', {
+            const response = await userInstance.post('/api/users/payment', {
                 amount: amountttl * 100,
                 currency: "INR",
                 receipt: `receipt_${Date.now()}`,

@@ -30,7 +30,7 @@ function AdminEdit2() {
         onSubmit: async (values) => {
             setLoading(true)
             try {
-                const response = await AdminInstance.put(`/dishes/${id}`, values)
+                const response = await AdminInstance.put(`/api/admin/dishes/${id}`, values)
                 toast.success('Updated successfully')
                 console.log(response.data);
                 navigate('/adminproduct')

@@ -61,7 +61,7 @@ const Registration = () => {
         e.preventDefault()
 
         if(validateForm()){
-                userInstance.post("/sendotp",{phonenumber:formdata.phonenumber})
+                userInstance.post("api/users/sendotp",{phonenumber:formdata.phonenumber})
                 .then(result => {
                     console.log(result);
                     toast.success("registration success. redirecting to OTP verification")

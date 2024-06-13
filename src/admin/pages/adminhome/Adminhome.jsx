@@ -21,7 +21,7 @@ const Adminhome = () => {
                     toast.error("Admin token is not found");
                     return;
                 }
-                const response = await AdminInstance.get('/users');
+                const response = await AdminInstance.get('/api/admin/users');
                 setCount(response.data.datacount);
             } catch (error) {
                 console.error(error);
@@ -38,7 +38,7 @@ const Adminhome = () => {
                     toast.error("Admin token is not found");
                     return;
                 }
-                const eresponse = await AdminInstance.get('/orders',{headers:{Authorization:`Bearer ${adminToken}`}});
+                const eresponse = await AdminInstance.get('/api/admin/orders',{headers:{Authorization:`Bearer ${adminToken}`}});
                 setOrdercount(eresponse.data.datacount);
             } catch (error) {
                 console.error(error);

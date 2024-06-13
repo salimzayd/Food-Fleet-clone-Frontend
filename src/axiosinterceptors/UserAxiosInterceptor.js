@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 
 const userInstance = axios.create({
-    baseURL:'http://localhost:5000/api/users/'
+baseURL:process.env.React_App_Base_Url
 })
 
 userInstance.interceptors.request.use(

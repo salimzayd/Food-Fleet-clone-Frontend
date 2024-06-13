@@ -17,7 +17,7 @@ const AdminOrder = () => {
                     toast.error("Admin token is not found");
                     return;
                 }
-                const response = await AdminInstance.get('/orders')
+                const response = await AdminInstance.get('/api/admin/orders')
                 setData(response.data.data)
                 console.log(response.data.data); 
             }catch(error){

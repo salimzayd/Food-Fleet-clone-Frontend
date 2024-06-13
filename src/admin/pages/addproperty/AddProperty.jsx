@@ -28,7 +28,7 @@ const AddProperty = () => {
             formDataToSend.append("price", formData.price);
             formDataToSend.append("description", formData.description);
 
-            const response = await AdminInstance.post("/product", formDataToSend, {
+            const response = await AdminInstance.post("/api/admin/product", formDataToSend, {
                 headers: { "Content-Type": "multipart/form-data" },
             });
 

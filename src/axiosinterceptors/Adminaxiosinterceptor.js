@@ -4,7 +4,8 @@ import { toast } from 'react-toastify';
 
 
     const AdminInstance = axios.create({
-        baseURL:'http://localhost:5000/api/admin/',
+    baseURL:process.env.React_App_Base_Url
+        
     })
 
     AdminInstance.interceptors.request.use((config) => {
