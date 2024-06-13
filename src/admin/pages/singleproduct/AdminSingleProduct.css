@@ -2,7 +2,7 @@
 .main-container {
     width: 100%;
     height: 730px;
-    background-image: url('C:/Users/hp/OneDrive/Desktop/clone project/frontend/foodfleet/src/components/assets/product_img/white-concrete-wall.jpg');
+    /* background-image: url('"C:\Users\hp\OneDrive\Desktop\clone project\frontend\foodfleet\src\components\assets\product_img\blck.jpg"'); */
     filter: blur(1.5px);
     background-size: cover;
     position: absolute;
