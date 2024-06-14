@@ -28,8 +28,12 @@ const Dishes = () =>{
             try{
             
                 const response = await userInstance.get('/api/users/dishes')
-                setDishes(response.data.data)
-                console.log(response.data.data);
+                console.log(response);
+                if(response && response.data && response.data.data) {
+                    setDishes(response.data.data)
+                }
+
+
             }
             catch(error){
                 console.log("Error fetching dishes: ",error);
