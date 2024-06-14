@@ -28,8 +28,8 @@ const ViewDish = () => {
 
     const [loading, setLoading] = useState(false);
     const [review, setReview] = useState([]);
-    const [reviewtext, setReviewText] = useState("");
-    const [rating, setRating] = useState(0);
+    // const [reviewtext, setReviewText] = useState("");
+    // const [rating, setRating] = useState(0);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -100,7 +100,7 @@ const ViewDish = () => {
 
             const { data } = response.data;
             const options = {
-                key: 'rzp_test_OIASTmyhpwu5GD',
+                key: process.env.React_App_Razorpay_Key,
                 amount: data.amount,
                 currency: data.currency,
                 name: "FOODFLEET",

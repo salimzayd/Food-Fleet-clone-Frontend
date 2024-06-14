@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import "./Adminhome.css";
 
 const Adminhome = () => {
-    const [data, setData] = useState('');
+    // const [data, setData] = useState('');
     const [count, setCount] = useState(0);
     const [ordercount, setOrdercount] = useState(0);
 

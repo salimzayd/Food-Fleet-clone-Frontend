@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import axios from 'axios';
 import "./Search.css"
 import { Button } from 'react-bootstrap';
 import userInstance from '../../axiosinterceptors/UserAxiosInterceptor';
