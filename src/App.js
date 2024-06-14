@@ -23,7 +23,7 @@ import AdminEdit2 from "./admin/pages/editproperty/EditProperty";
 import Footer from "./components/footer/Footer";
 import AdminOrder from "./admin/pages/adminorder/AdminOrder";
 import AdminCategory from "./admin/pages/admincategory/AdminCategory";
-import Home1 from "./components/home/Home1";
+import Home1 from "./components/Home/Home1";
 
 
 
