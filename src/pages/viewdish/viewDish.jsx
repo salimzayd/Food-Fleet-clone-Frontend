@@ -99,7 +99,7 @@ const ViewDish = () => {
 
             const { data } = response.data;
             const options = {
-                key: process.env.React_App_Razorpay_Key,
+                key: process.env.REACT_APP_RAZORPAY_KEY,
                 amount: data.amount,
                 currency: data.currency,
                 name: "FOODFLEET",

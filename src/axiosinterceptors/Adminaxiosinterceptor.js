@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 
     const AdminInstance = axios.create({
-    baseURL:process.env.React_App_Base_Url
+    baseURL:process.env.REACT_APP_BASE_URL
         
     })
 
