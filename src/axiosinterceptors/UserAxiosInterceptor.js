@@ -10,6 +10,7 @@ baseURL:process.env.REACT_APP_BASE_URL
 stance.interceptors.request.use(
     
     (config) => {
+        config.headers["Content-Type"] = 'Application/json'
     const usertoken = localStorage.getItem('token');
         console.log(config);
         if(usertoken){
