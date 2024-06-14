@@ -3,11 +3,11 @@ import { toast } from "react-toastify";
 
 
 
-const userInstance = axios.create({
+const stance = axios.create({
 baseURL:process.env.React_App_Base_Url
 })
 
-userInstance.interceptors.request.use(
+stance.interceptors.request.use(
     
     (config) => {
     const usertoken = localStorage.getItem('token');
@@ -22,7 +22,7 @@ userInstance.interceptors.request.use(
     }
 );
 
-userInstance.interceptors.response.use(
+stance.interceptors.response.use(
     (response) => {
         return response;
     },
@@ -46,4 +46,4 @@ userInstance.interceptors.response.use(
     }
 );
 
-export default userInstance;
+export default stance;
