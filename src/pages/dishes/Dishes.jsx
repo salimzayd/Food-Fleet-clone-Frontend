@@ -27,7 +27,7 @@ const Dishes = () =>{
         const fetchDishes = async () => {
             try{
             
-                const response = await userInstance.get('api/users/dishes')
+                const response = await userInstance.get('/api/users/dishes')
                 setDishes(response.data.data)
                 console.log(response.data.data);
             }
