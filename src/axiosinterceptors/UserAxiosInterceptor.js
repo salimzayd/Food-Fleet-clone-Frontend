@@ -2,7 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 
-
+console.log(process.env.REACT_APP_BASE_URL)
 const stance = axios.create({
 baseURL:process.env.REACT_APP_BASE_URL
 })
