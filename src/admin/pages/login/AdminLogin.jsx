@@ -4,6 +4,7 @@ import {Col,Row,Button,Container} from 'react-bootstrap'
 import axios from 'axios'
 import {toast} from 'react-toastify'
 import {PulseLoader} from 'react-spinners'
+import AdminInstance from '../../../axiosinterceptors/Adminaxiosinterceptor'
 
 function AdminLogin (){
 
@@ -23,7 +24,7 @@ const handleSubmit = async (e) =>{
     setLoading(true)
 
     try{
-        const response = await axios.post("http://localhost:5000/api/admin/login",login);
+        const response = await AdminInstance.post("/api/admin/login",login);
         const {data} = response.data
         console.log("login successfull",data);
 

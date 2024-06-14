@@ -42,9 +42,9 @@ const AdminUsers = () => {
             }
             
             const tokenWithBearer = `Bearer ${admintoken}`;
-            const url = `http://localhost:5000/api/admin/users/block/${id}?action=${action}`;
+            const url = `/api/admin/users/block/${id}?action=${action}`;
 
-            const response = await axios.patch(url, {}, {
+            const response = await AdminInstance.patch(url, {}, {
                 headers: { Authorization: tokenWithBearer }
             });
 
