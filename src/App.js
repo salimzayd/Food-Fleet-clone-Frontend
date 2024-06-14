@@ -4,13 +4,11 @@ import About from "./components/aboutus/About"
 import NAVbar from "./components/navbar/navbar";
 import Login from "./pages/login/Login";
 import Registration from "./pages/registration/Registration";
-import Home1 from "./components/Home/Home1";
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import OTP from "./otp/OTP"
 import Dishes from "./pages/dishes/Dishes";
 import Adminhome from "./admin/pages/adminhome/Adminhome";
-import Adminbar from "./admin/components/Adminbar";
 import AdminUsers from "./admin/pages/adminusers/AdminUsers";
 import AdminLogin from "./admin/pages/login/AdminLogin";
 import AdminProduct from "./admin/pages/adminproduct/AdminProduct";
@@ -25,6 +23,7 @@ import AdminEdit2 from "./admin/pages/editproperty/EditProperty";
 import Footer from "./components/footer/Footer";
 import AdminOrder from "./admin/pages/adminorder/AdminOrder";
 import AdminCategory from "./admin/pages/admincategory/AdminCategory";
+import Home1 from "./components/home/Home1";
 
 
 
@@ -38,7 +37,7 @@ function App() {
       {isPath ? null : <NAVbar />}
 
        <Routes>
-         <Route path="/" element={<Home1 /> } />
+         <Route path="/" element={<Home1 />} />
          <Route path="/about" element={<About />} />
          <Route path="/dishes" element={<Dishes />} />
         <Route path="/register" element={<Registration /> } />
