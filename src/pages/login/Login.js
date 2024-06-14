@@ -3,8 +3,8 @@ import { Container, Row, Col, FormGroup, FormControl, Button, Form } from 'react
 import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 import { toast } from 'react-toastify';
-import axios from 'axios';
 import { RotateLoader } from 'react-spinners';
+import userInstance from '../../axiosinterceptors/UserAxiosInterceptor';
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -36,7 +36,7 @@ const Login = () => {
     setLoading(true);
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/users/login", {
+      const response = await userInstance.post("/api/users/login", {
         email: formdata.email,
         password: formdata.password
       }, {

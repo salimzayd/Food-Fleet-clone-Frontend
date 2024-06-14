@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useReducer } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import axios from 'axios';
 import { Button, Card } from 'react-bootstrap';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -137,7 +136,7 @@ const ViewDish = () => {
                     toast.error("You are not logged in!");
                     navigate('/login');
                 }
-                const reviewresponse = await axios.get(`http://localhost:5000/api/users/review/${id}`, {
+                const reviewresponse = await userInstance.get(`/api/users/review/${id}`, {
                     headers: { Authorization: tokenWithBearer }
                 });
                 setReview(reviewresponse.data.data);

@@ -4,7 +4,7 @@ import {  useNavigate } from "react-router-dom";
 import axios from "axios";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import userInstance from '../../axiosinterceptors/UserAxiosInterceptor';
+import userInstance from "../../axiosinterceptors/UserAxiosInterceptor"
 
 
 
@@ -27,7 +27,7 @@ const Dishes = () =>{
         const fetchDishes = async () => {
             try{
             
-                const response = await userInstance.get('/api/users/dishes')
+                const response = await userInstance.get('api/users/dishes')
                 setDishes(response.data.data)
                 console.log(response.data.data);
             }
