@@ -12,7 +12,6 @@ stance.interceptors.request.use(
     (config) => {
         config.headers["Content-Type"] = 'Application/json'
     const usertoken = localStorage.getItem('token');
-        console.log(config);
         if(usertoken){
             config.headers.Authorization = `Bearer ${usertoken}`
         }
@@ -25,6 +24,7 @@ stance.interceptors.request.use(
 
 stance.interceptors.response.use(
     (response) => {
+        console.log(response)
         return response;
     },
     (error) =>{
