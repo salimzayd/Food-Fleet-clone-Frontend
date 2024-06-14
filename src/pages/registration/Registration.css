@@ -5,7 +5,7 @@
         color: red;
     }
     .container1{
-        background-image: url('C:\Users\hp\OneDrive\Desktop\clone project\frontend\foodfleet\src\components\assets\images\pic1.jpg');
+        background-image: url('../../components/Assets/images/pic1.jpg');
         background-repeat: no-repeat;
         background-size: cover;
     }

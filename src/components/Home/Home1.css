@@ -6,7 +6,7 @@
 }
 
 .blur-background {
-  background-image: url('../assets/images/freshaii.jpg');
+  background-image: url('../Assets/images/freshaii.jpg');
   filter: blur(2px);
   background-size: cover;
   position: absolute;
@@ -57,7 +57,7 @@ h3 {
   max-width: 500px;
   border-radius: 20px;
   box-shadow: 2px 2px 4px 0 rgba(196, 24, 24, 0.1);
-  background-image: url('C:/Users/hp/OneDrive/Desktop/clone project/frontend/foodfleet/src/components/assets/images/new yellow.jpg');
+  background-image: url('../Assets//images/new yellow.jpg');
   background-size: cover;
   text-align: center;
   padding: 10px;

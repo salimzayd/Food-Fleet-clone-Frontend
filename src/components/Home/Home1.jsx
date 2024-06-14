@@ -1,7 +1,7 @@
 import React,{useEffect} from 'react';
 import './Home1.css';
 import { Button } from 'react-bootstrap';
-import bikee from '../../components/assets/product_img/bikee.png';
+import bikee from '../../components/Assets/product_img/bikee.png';
 import { useNavigate } from 'react-router-dom';
 import Contactus from '../contactus/Contactus';
 import About from '../aboutus/About';
