@@ -18,7 +18,7 @@ const Dishes = () =>{
     const navigate  = useNavigate()
 
     const [dishes,setDishes] = useState([])
-    // const [btn,setBtn] =  useState(true);
+    const [btn,setBtn] =  useState(true);
     const [search,setSearch] = useState('')
 
     const searchedDish = dishes.filter(dishes => dishes.title.toLowerCase().includes(search.toLowerCase()))
@@ -27,7 +27,7 @@ const Dishes = () =>{
         const fetchDishes = async () => {
             try{
             
-                const response = await userInstance.get('/api/users/dishes')
+                const response = await userInstance.get('/api/users/dishes',{headers:{"Content-Type": "application/json"}})
                 console.log(response);
                 if(response && response.data && response.data.data) {
                     setDishes(response.data.data)

@@ -7,10 +7,8 @@ const stance = axios.create({
 baseURL:process.env.REACT_APP_BASE_URL
 })
 
-stance.interceptors.request.use(
-    
-    (config) => {
-        config.headers["Content-Type"] = 'Application/json'
+stance.interceptors.request.use((config) => {
+        // config.headers["Content-Type"] = 'Application/json'
     const usertoken = localStorage.getItem('token');
         if(usertoken){
             config.headers.Authorization = `Bearer ${usertoken}`
