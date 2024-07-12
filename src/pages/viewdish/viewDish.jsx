@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useReducer } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import React, { useEffect, useState, useReducer } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Button, Card } from 'react-bootstrap';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import './viewDish.css'
+import './viewDish.css';
 import { toast } from 'react-toastify';
 import { SyncLoader } from 'react-spinners';
 import userInstance from '../../axiosinterceptors/UserAxiosInterceptor';
@@ -21,14 +21,11 @@ const reducer = (state, action) => {
         default:
             return state;
     }
-}
+};
 
 const ViewDish = () => {
-
     const [loading, setLoading] = useState(false);
     const [review, setReview] = useState([]);
-    // const [reviewtext, setReviewText] = useState("");
-    // const [rating, setRating] = useState(0);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -36,7 +33,6 @@ const ViewDish = () => {
     }, []);
 
     const { id } = useParams();
-    console.log(id);
     const [dish, setDish] = useState(null);
 
     useEffect(() => {
@@ -53,7 +49,6 @@ const ViewDish = () => {
                 });
 
                 setDish(response.data.data);
-                console.log(response.data.data);
             } catch (error) {
                 console.error("Error fetching data", error);
             }
@@ -140,7 +135,6 @@ const ViewDish = () => {
                     headers: { Authorization: tokenWithBearer }
                 });
                 setReview(reviewresponse.data.data);
-                console.log(reviewresponse.data.data);
             } catch (error) {
                 console.error("Error fetching reviews", error);
             }
@@ -151,7 +145,6 @@ const ViewDish = () => {
     return (
         <>
             <div style={{ height: "680px", backgroundColor: "#FCFFE0" }}>
-
                 <div className='col-20' style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                     {dish && (
                         <Card className='' data-aos="flip-right" style={{ marginTop: "15px", backgroundColor: "#003C43", borderRadius: "25px", boxShadow: "5px 6px 10px #77B0AA" }} >
@@ -176,7 +169,6 @@ const ViewDish = () => {
                                 <div style={{ backgroundColor: "#003C43", width: "350px", height: "180px", color: "white" }}>
                                     Description:<h4>{dish.description}</h4>
 
-                                    {/* <Button className='bg-primary' style={{ marginRight: "10px" }}>Add to cart</Button> */}
                                     <Button className='bg-success' onClick={handlePayment} style={{ width: "200px" }}>
                                         {loading ? (
                                             <SyncLoader color='#68D2E8' loading={loading} style={{ alignItems: "center" }} />
@@ -195,7 +187,7 @@ const ViewDish = () => {
                             {review.map((item, index) => (
                                 <div key={index} className='review card'>
                                     <div className='review-hdr'>
-                                        {/* <div>{item.user.name}</div> */}
+                                        <div>{item.user.name}</div>
                                     </div>
                                     <div className='review-details'>
                                         <h3>{item.user.name}</h3>
