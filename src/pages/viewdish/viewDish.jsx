@@ -75,9 +75,12 @@ const ViewDish = () => {
             }
             const tokenWithBearer = `Bearer ${usertoken}`;
     
+            // Ensure product IDs are being passed correctly as an array
+            const productIds = [id]; // Assuming `id` is the product ID. Adjust as necessary.
+    
             const orderresponse = await userInstance.post('/api/users/order', {
                 userId: userid,
-                productIds: id,
+                products: productIds,
                 amount: amountttl,
                 currency: "INR"
             }, {
@@ -120,14 +123,15 @@ const ViewDish = () => {
                 }
             };
     
-            const rzrpay = new window.Razorpay(options);
-            rzrpay.open();
+            const rzpay = new window.Razorpay(options);
+            rzpay.open();
         } catch (error) {
             console.error("Payment failed", error);
             toast.error("Payment failed. Please try again later");
         }
         setLoading(false);
     };
+    
     
     
 
