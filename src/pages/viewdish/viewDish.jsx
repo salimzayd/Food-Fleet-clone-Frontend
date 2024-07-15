@@ -120,8 +120,8 @@ const ViewDish = () => {
                 }
             };
     
-            const rzpay = new window.Razorpay(options);
-            rzpay.open();
+            const rzrpay = new window.Razorpay(options);
+            rzrpay.open();
         } catch (error) {
             console.error("Payment failed", error);
             toast.error("Payment failed. Please try again later");
