@@ -61,78 +61,66 @@ const ViewDish = () => {
     const amountttl = totalAmount * count;
 
     const handlePayment = async () => {
-    setLoading(true);
-    try {
-        const usertoken = localStorage.getItem('token');
-        const name = localStorage.getItem('name');
-        const userid = localStorage.getItem('_id');
+        setLoading(true);
+        try {
+            const usertoken = localStorage.getItem('token');
+            const name = localStorage.getItem('name');
+            const userid = localStorage.getItem('_id');
 
-        if (!usertoken) {
-            console.log('Token not found');
-            toast.error("User not authenticated");
-            setLoading(false);
-            return;
-        }
-        const tokenWithBearer = `Bearer ${usertoken}`;
-
-        // Log token and user details for debugging
-        console.log('Token:', usertoken);
-        console.log('User ID:', userid);
-        
-        const orderresponse = await userInstance.post('/api/users/order', {
-            userId: userid,
-            productIds: id,
-            amount: amountttl,
-            currency: "INR"
-        }, {
-            headers: { Authorization: tokenWithBearer }
-        });
-
-        console.log('Order Response:', orderresponse);
-
-        const { payment_id, _id: orderId } = orderresponse.data.data;
-
-        const response = await userInstance.post('/api/users/payment', {
-            amount: amountttl * 100,
-            currency: "INR",
-            receipt: `receipt_${Date.now()}`,
-            payment_id
-        }, {
-            headers: { Authorization: tokenWithBearer }
-        });
-
-        console.log('Payment Response:', response);
-
-        const { data } = response.data;
-        const options = {
-            key: process.env.REACT_APP_RAZORPAY_KEY,
-            amount: data.amount,
-            currency: data.currency,
-            name: "FOODFLEET",
-            description: "Test transaction",
-            image: dish.image,
-            order_id: data.id,
-            handler: () => {
-                toast.success("Payment successful");
-                navigate(`/order/${orderId}`);
-            },
-            prefill: {
-                name: name,
-            },
-            theme: {
-                color: "#3399cc"
+            if (!usertoken) {
+                console.log('Token not found');
+                return;
             }
-        };
+            const tokenWithBearer = `Bearer ${usertoken}`;
 
-        const rzpay = new window.Razorpay(options);
-        rzpay.open();
-    } catch (error) {
-        console.error("Payment failed", error);
-        toast.error("Payment failed. Please try again later");
-    }
-    setLoading(false);
-};
+            const orderresponse = await userInstance.post('/api/users/order', {
+                userId: userid,
+                productIds: id,
+                amount: amountttl,
+                currency: "INR"
+            }, {
+                headers: { Authorization: tokenWithBearer }
+            });
 
+            const { payment_id, _id: orderId } = orderresponse.data.data;
+            const response = await userInstance.post('/api/users/payment', {
+                amount: amountttl * 100,
+                currency: "INR",
+                receipt: `receipt_${Date.now()}`,
+                payment_id
+            }, {
+                headers: { Authorization: tokenWithBearer }
+            });
+
+            const { data } = response.data;
+            const options = {
+                key: process.env.REACT_APP_RAZORPAY_KEY,
+                amount: data.amount,
+                currency: data.currency,
+                name: "FOODFLEET",
+                description: "Test transaction",
+                image: dish.image,
+                order_id: data.id,
+                handler: () => {
+                    toast.success("Payment successful");
+                    navigate(`/order/${orderId}`);
+                },
+                prefill: {
+                    name: name,
+                },
+                theme: {
+                    color: "#3399cc"
+                }
+            };
+
+            const rzpay = new window.Razorpay(options);
+            rzpay.open();
+        } catch (error) {
+            console.error("Payment failed", error);
+            toast.error("Payment failed. Please try again later");
+        }
+        setLoading(false);
+    };
 
     useEffect(() => {
         const fetchReview = async () => {
