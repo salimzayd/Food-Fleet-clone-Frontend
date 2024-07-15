@@ -75,10 +75,6 @@ const ViewDish = () => {
             }
             const tokenWithBearer = `Bearer ${usertoken}`;
     
-            // Log token and user details for debugging
-            console.log('Token:', usertoken);
-            console.log('User ID:', userid);
-            
             const orderresponse = await userInstance.post('/api/users/order', {
                 userId: userid,
                 productIds: id,
@@ -132,6 +128,7 @@ const ViewDish = () => {
         }
         setLoading(false);
     };
+    
     
 
     useEffect(() => {
