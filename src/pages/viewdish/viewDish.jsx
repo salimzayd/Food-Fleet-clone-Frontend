@@ -66,13 +66,19 @@ const ViewDish = () => {
             const usertoken = localStorage.getItem('token');
             const name = localStorage.getItem('name');
             const userid = localStorage.getItem('_id');
-
+    
             if (!usertoken) {
                 console.log('Token not found');
+                toast.error("User not authenticated");
+                setLoading(false);
                 return;
             }
             const tokenWithBearer = `Bearer ${usertoken}`;
-
+    
+            // Log token and user details for debugging
+            console.log('Token:', usertoken);
+            console.log('User ID:', userid);
+            
             const orderresponse = await userInstance.post('/api/users/order', {
                 userId: userid,
                 productIds: id,
@@ -81,8 +87,11 @@ const ViewDish = () => {
             }, {
                 headers: { Authorization: tokenWithBearer }
             });
-
+    
+            console.log('Order Response:', orderresponse);
+    
             const { payment_id, _id: orderId } = orderresponse.data.data;
+    
             const response = await userInstance.post('/api/users/payment', {
                 amount: amountttl * 100,
                 currency: "INR",
@@ -91,7 +100,9 @@ const ViewDish = () => {
             }, {
                 headers: { Authorization: tokenWithBearer }
             });
-
+    
+            console.log('Payment Response:', response);
+    
             const { data } = response.data;
             const options = {
                 key: process.env.REACT_APP_RAZORPAY_KEY,
@@ -112,7 +123,7 @@ const ViewDish = () => {
                     color: "#3399cc"
                 }
             };
-
+    
             const rzpay = new window.Razorpay(options);
             rzpay.open();
         } catch (error) {
@@ -121,6 +132,7 @@ const ViewDish = () => {
         }
         setLoading(false);
     };
+    
 
     useEffect(() => {
         const fetchReview = async () => {
